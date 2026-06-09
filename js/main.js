@@ -9,9 +9,9 @@
   const planSelect = document.getElementById("plan");
 
   const PRICES = {
-    dispatch: { monthly: 49, annual: 39, min: 5 },
-    ecosystem: { monthly: 89, annual: 71, min: 10 },
-    enterprise: { monthly: 129, annual: 103, min: 50 },
+    dispatch: { monthly: 499, annual: 399, min: 5 },
+    ecosystem: { monthly: 899, annual: 719, min: 10 },
+    enterprise: { monthly: 1199, annual: 959, min: 50 },
   };
 
   let isAnnual = false;
