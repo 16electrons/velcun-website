@@ -2125,6 +2125,10 @@ h3 {
 
   .eco-card-wide { grid-column: span 2; }
 
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .demo-container {
     grid-template-columns: 1fr;
   }
@@ -2198,7 +2202,8 @@ h3 {
 
   .feature-grid,
   .ecosystem-grid,
-  .steps {
+  .steps,
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
