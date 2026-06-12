@@ -653,6 +653,11 @@ h3 {
   align-items: start;
 }
 
+.roi-inputs,
+.roi-results {
+  min-width: 0;
+}
+
 .roi-inputs {
   display: flex;
   flex-direction: column;
@@ -730,6 +735,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 0.875rem 1rem;
   background: var(--bg-elevated);
   border-radius: var(--radius);
@@ -738,12 +744,14 @@ h3 {
 .breakdown-label {
   font-size: 0.875rem;
   color: var(--text-secondary);
+  min-width: 0;
 }
 
 .breakdown-value {
   font-size: 1.0625rem;
   font-weight: 600;
   color: var(--success);
+  flex-shrink: 0;
 }
 
 .roi-cta {
@@ -1112,6 +1120,7 @@ h3 {
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+  max-width: 100%;
 }
 
 .compare-table {
@@ -1405,6 +1414,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 0.875rem 1rem;
   background: var(--bg-elevated);
   border-radius: var(--radius);
@@ -1418,6 +1428,7 @@ h3 {
 .comparison-metric .metric-value {
   font-size: 0.9375rem;
   font-weight: 600;
+  text-align: right;
 }
 
 .comparison-metric .metric-value.before {
@@ -2133,10 +2144,23 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-arrow {
+    transform: rotate(90deg);
+  }
+
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 420px;
     margin-inline: auto;
+  }
+
+  .roi-calculator-enhanced {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .price-card-featured {
@@ -2198,6 +2222,20 @@ h3 {
   .hero-stats {
     flex-direction: column;
     gap: 1.25rem;
+  }
+
+  .roi-breakdown-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .comparison-metric {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .comparison-metric .metric-value {
+    text-align: left;
   }
 
   .feature-grid,

@@ -28,6 +28,7 @@ if ! gh auth status &>/dev/null; then
 fi
 
 REPO_NAME="${1:-velcun-website}"
+VERCEL_PROJECT="${VERCEL_PROJECT:-velcun-website}"
 
 if git remote get-url origin &>/dev/null; then
   echo "→ Pushing to existing remote..."
@@ -43,8 +44,11 @@ if ! npx vercel whoami &>/dev/null; then
   npx vercel login
 fi
 
+echo "→ Linking Vercel project: $VERCEL_PROJECT"
+npx vercel link --yes --project "$VERCEL_PROJECT"
+
 echo "→ Deploying to Vercel production..."
-npx vercel --prod --yes --name velcun
+npx vercel --prod --yes
 
 echo ""
 echo "✓ Done! Add velcun.com in Vercel → Project → Settings → Domains if not already added."

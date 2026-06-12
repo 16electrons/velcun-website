@@ -181,7 +181,7 @@
       }
     } catch (error) {
       // Fallback to email if API fails
-      const subject = encodeURIComponent(`VELCUN Demo — ${data.plan} Plan`);
+      const subject = encodeURIComponent(`VELCUN Workflow Demo — ${data.plan} Plan`);
       const body = encodeURIComponent(
         `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nFleet Size: ${data.fleet}\nPlan: ${data.plan}\n\n${data.message || ""}`
       );
@@ -202,19 +202,19 @@
 
   const loadTruckData = {
     1: [
-      { id: 'Truck #14', driver: 'Mike R.', deadhead: '45 mi', hos: '8.5 hrs', profit: '$1,850', score: '94%', best: true },
-      { id: 'Truck #07', driver: 'Sarah K.', deadhead: '120 mi', hos: '7.2 hrs', profit: '$1,720', score: '87%', best: false },
-      { id: 'Truck #23', driver: 'James T.', deadhead: '180 mi', hos: '5.8 hrs', profit: '$1,580', score: '72%', best: false },
+      { id: 'Accept lower first leg', driver: 'Ohio outbound capacity tightens tomorrow', deadhead: '-$180', hos: '+20%', profit: '$1,850', score: '94%', best: true },
+      { id: 'Take highest rate', driver: 'Texas market softens overnight', deadhead: '$2,400', hos: '-8%', profit: '$1,720', score: '87%', best: false },
+      { id: 'Hold capacity', driver: 'No reliable outbound signal yet', deadhead: '$0', hos: 'Unknown', profit: '$1,580', score: '72%', best: false },
     ],
     2: [
-      { id: 'Truck #08', driver: 'Lisa M.', deadhead: '35 mi', hos: '9.2 hrs', profit: '$1,420', score: '91%', best: true },
-      { id: 'Truck #15', driver: 'Tom W.', deadhead: '95 mi', hos: '8.0 hrs', profit: '$1,350', score: '84%', best: false },
-      { id: 'Truck #31', driver: 'Karen D.', deadhead: '150 mi', hos: '6.5 hrs', profit: '$1,200', score: '76%', best: false },
+      { id: 'Accept Miami reefer', driver: 'Receiver delays clearing by morning', deadhead: '+$120', hos: '+14%', profit: '$1,420', score: '91%', best: true },
+      { id: 'Wait for Tampa', driver: 'Rate is better but pickup risk is high', deadhead: '+$240', hos: '-3%', profit: '$1,350', score: '84%', best: false },
+      { id: 'Stay Atlanta', driver: 'Capacity pressure likely fades by noon', deadhead: '$0', hos: 'Unknown', profit: '$1,200', score: '76%', best: false },
     ],
     3: [
-      { id: 'Truck #19', driver: 'John B.', deadhead: '50 mi', hos: '7.8 hrs', profit: '$1,680', score: '92%', best: true },
-      { id: 'Truck #04', driver: 'Amy L.', deadhead: '110 mi', hos: '6.9 hrs', profit: '$1,550', score: '85%', best: false },
-      { id: 'Truck #27', driver: 'Chris P.', deadhead: '175 mi', hos: '5.2 hrs', profit: '$1,380', score: '71%', best: false },
+      { id: 'Route through Denver', driver: 'Flatbed demand rises after weather delay', deadhead: '+$80', hos: '+11%', profit: '$1,680', score: '92%', best: true },
+      { id: 'Divert to Salt Lake', driver: 'Better current RPM, weaker reload data', deadhead: '+$180', hos: '+2%', profit: '$1,550', score: '85%', best: false },
+      { id: 'Reject lane', driver: 'No driver yield or home-time fit', deadhead: '$0', hos: 'Poor', profit: '$1,380', score: '71%', best: false },
     ],
   };
 
@@ -222,27 +222,27 @@
     const trucks = loadTruckData[loadId];
     demoTrucks.innerHTML = trucks.map(truck => `
       <div class="demo-truck ${truck.best ? 'demo-truck-best' : ''}">
-        ${truck.best ? '<div class="truck-badge">Best Match</div>' : ''}
+        ${truck.best ? '<div class="truck-badge">Best Margin Move</div>' : ''}
         <div class="truck-info">
           <span class="truck-id">${truck.id}</span>
-          <span class="truck-driver">Driver: ${truck.driver}</span>
+          <span class="truck-driver">${truck.driver}</span>
         </div>
         <div class="truck-metrics">
           <div class="metric">
-            <span class="metric-label">Deadhead</span>
-            <span class="metric-value ${parseInt(truck.deadhead) < 60 ? 'good' : parseInt(truck.deadhead) < 150 ? '' : 'warning'}">${truck.deadhead}</span>
+            <span class="metric-label">First Leg</span>
+            <span class="metric-value ${truck.deadhead.includes('-') || truck.deadhead.includes('+') ? 'good' : ''}">${truck.deadhead}</span>
           </div>
           <div class="metric">
-            <span class="metric-label">HOS</span>
-            <span class="metric-value ${parseFloat(truck.hos) > 7 ? 'good' : parseFloat(truck.hos) > 6 ? '' : 'warning'}">${truck.hos}</span>
+            <span class="metric-label">Next Leg</span>
+            <span class="metric-value ${truck.hos.includes('+') ? 'good' : truck.hos.includes('-') || truck.hos === 'Poor' ? 'warning' : ''}">${truck.hos}</span>
           </div>
           <div class="metric">
-            <span class="metric-label">Profit</span>
+            <span class="metric-label">Net Margin</span>
             <span class="metric-value ${parseInt(truck.profit.replace(/[$,]/g, '')) > 1600 ? 'excellent' : ''}">${truck.profit}</span>
           </div>
         </div>
         <div class="truck-score">
-          <span class="score-label">AI Score</span>
+          <span class="score-label">Agent Score</span>
           <span class="score-value">${truck.score}</span>
         </div>
       </div>
@@ -280,7 +280,7 @@
       const loadsPerTruckPerYear = 52;
       const totalLoads = fleet * loadsPerTruckPerYear;
       
-      // Dispatch efficiency savings: reduce from current to 0.5 hours per load
+      // Back-office automation savings: reduce manual workflow time to 0.5 hours per load
       const dispatchSavings = (dispatchHours - 0.5) * totalLoads * 50; // $50/hr dispatcher cost
       
       // Deadhead reduction: from current to 8%
