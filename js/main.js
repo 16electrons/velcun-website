@@ -258,55 +258,79 @@
     });
   });
 
+  // Demo tab switching
+  const demoTabs = document.querySelectorAll('.demo-tab');
+  
+  demoTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      demoTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      // Here you could add logic to switch between different demo content
+      // For now, the lane intelligence demo is shown by default
+    });
+  });
+
   // Enhanced ROI Calculator
   const roiCalculator = {
     fleetSize: document.getElementById('roi-fleet-size'),
-    dispatchTime: document.getElementById('roi-dispatch-time'),
+    settlementDelay: document.getElementById('roi-settlement-delay'),
     deadhead: document.getElementById('roi-deadhead'),
     turnover: document.getElementById('roi-turnover'),
     calculateBtn: document.getElementById('calculate-roi'),
     savings: document.getElementById('roi-savings'),
-    dispatchSavings: document.getElementById('roi-dispatch-savings'),
-    deadheadSavings: document.getElementById('roi-deadhead-savings'),
-    turnoverSavings: document.getElementById('roi-turnover-savings'),
+    settlementSavings: document.getElementById('roi-settlement-savings'),
+    laneSavings: document.getElementById('roi-lane-savings'),
+    ingestionSavings: document.getElementById('roi-ingestion-savings'),
+    driverSavings: document.getElementById('roi-driver-savings'),
+    borderSavings: document.getElementById('roi-border-savings'),
 
     calculate() {
       const fleet = parseInt(this.fleetSize.value) || 25;
-      const dispatchHours = parseFloat(this.dispatchTime.value) || 4;
+      const settlementDelay = parseInt(this.settlementDelay.value) || 30;
       const deadheadPct = parseInt(this.deadhead.value) || 15;
       const turnoverPct = parseInt(this.turnover.value) || 30;
 
       // Calculate savings based on industry benchmarks
       const loadsPerTruckPerYear = 52;
       const totalLoads = fleet * loadsPerTruckPerYear;
-      
-      // Back-office automation savings: reduce manual workflow time to 0.5 hours per load
-      const dispatchSavings = (dispatchHours - 0.5) * totalLoads * 50; // $50/hr dispatcher cost
-      
-      // Deadhead reduction: from current to 8%
-      const deadheadReduction = (deadheadPct - 8) / 100;
       const avgRevenuePerLoad = 2000;
-      const deadheadSavings = totalLoads * avgRevenuePerLoad * deadheadReduction;
-      
-      // Driver retention savings: reduce turnover by 50%
-      const turnoverReduction = turnoverPct * 0.5;
-      const costPerDriverTurnover = 8000;
-      const turnoverSavings = fleet * (turnoverReduction / 100) * costPerDriverTurnover;
 
-      const totalSavings = dispatchSavings + deadheadSavings + turnoverSavings;
+      // Agentic Settlement savings: eliminate payment delays (30 days -> instant)
+      // Factoring cost saved + improved cash flow value
+      const settlementSavings = fleet * (settlementDelay / 30) * 2600; // ~$2,600 per truck per month in factoring/cash flow costs
+
+      // Predictive Lane Optimization: reduce deadhead from current to 8%
+      const deadheadReduction = (deadheadPct - 8) / 100;
+      const laneSavings = totalLoads * avgRevenuePerLoad * deadheadReduction;
+
+      // Semantic Ingestion: back-office automation (2 hours/load -> 0.5 hours)
+      const ingestionSavings = 1.5 * totalLoads * 50; // $50/hr dispatcher cost
+
+      // Driver Yield Optimization: reduce turnover by 40%
+      const turnoverReduction = turnoverPct * 0.4;
+      const costPerDriverTurnover = 8000;
+      const driverSavings = fleet * (turnoverReduction / 100) * costPerDriverTurnover;
+
+      // Border Execution: prevent delays and exceptions
+      const borderSavings = fleet * 400; // ~$400 per truck per month in delay prevention
+
+      const totalSavings = settlementSavings + laneSavings + ingestionSavings + driverSavings + borderSavings;
 
       // Update UI
       this.savings.textContent = `$${Math.round(totalSavings).toLocaleString()}`;
-      this.dispatchSavings.textContent = `$${Math.round(dispatchSavings).toLocaleString()}`;
-      this.deadheadSavings.textContent = `$${Math.round(deadheadSavings).toLocaleString()}`;
-      this.turnoverSavings.textContent = `$${Math.round(turnoverSavings).toLocaleString()}`;
+      this.settlementSavings.textContent = `$${Math.round(settlementSavings).toLocaleString()}`;
+      this.laneSavings.textContent = `$${Math.round(laneSavings).toLocaleString()}`;
+      this.ingestionSavings.textContent = `$${Math.round(ingestionSavings).toLocaleString()}`;
+      this.driverSavings.textContent = `$${Math.round(driverSavings).toLocaleString()}`;
+      this.borderSavings.textContent = `$${Math.round(borderSavings).toLocaleString()}`;
     }
   };
 
   if (roiCalculator.calculateBtn) {
     roiCalculator.calculateBtn.addEventListener('click', () => roiCalculator.calculate());
     // Auto-calculate on input change
-    [roiCalculator.fleetSize, roiCalculator.dispatchTime, roiCalculator.deadhead, roiCalculator.turnover].forEach(input => {
+    [roiCalculator.fleetSize, roiCalculator.settlementDelay, roiCalculator.deadhead, roiCalculator.turnover].forEach(input => {
       input.addEventListener('input', () => roiCalculator.calculate());
     });
     // Initial calculation
