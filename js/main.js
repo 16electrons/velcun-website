@@ -271,6 +271,37 @@
     });
   });
 
+  // Per-Truck ROI Calculator
+  const fleetScaleSlider = document.getElementById('fleet-scale-slider');
+  const fleetScaleValue = document.getElementById('fleet-scale-value');
+  const scaleMonthlyProfit = document.getElementById('scale-monthly-profit');
+  const scaleAnnualProfit = document.getElementById('scale-annual-profit');
+  const scaleRoi = document.getElementById('scale-roi');
+
+  const perTruckNetProfit = 951; // $951 net profit per truck per month
+  const velcunCostPerTruck = 899; // $899 per truck per month
+
+  function updatePerTruckScale() {
+    if (!fleetScaleSlider) return;
+    
+    const fleetSize = parseInt(fleetScaleSlider.value);
+    fleetScaleValue.textContent = fleetSize;
+    
+    const monthlyProfit = fleetSize * perTruckNetProfit;
+    const annualProfit = monthlyProfit * 12;
+    const totalVelcunCost = fleetSize * velcunCostPerTruck;
+    const roi = ((annualProfit / totalVelcunCost) * 100).toFixed(0);
+    
+    scaleMonthlyProfit.textContent = `$${monthlyProfit.toLocaleString()}`;
+    scaleAnnualProfit.textContent = `$${annualProfit.toLocaleString()}`;
+    scaleRoi.textContent = `${roi}%`;
+  }
+
+  if (fleetScaleSlider) {
+    fleetScaleSlider.addEventListener('input', updatePerTruckScale);
+    updatePerTruckScale();
+  }
+
   // Enhanced ROI Calculator
   const roiCalculator = {
     fleetSize: document.getElementById('roi-fleet-size'),

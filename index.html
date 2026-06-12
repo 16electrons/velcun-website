@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260612c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260612d" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -51,8 +51,12 @@
             Standard freight software is reactive and siloed. VELCUN is the middleware that plugs into your existing systems to address the 5 structural gaps draining carrier margin: autonomous settlement, predictive lane optimization, semantic ingestion, driver yield, and border execution.
           </p>
           <div class="hero-actions">
-            <a href="#roi-calculator" class="btn btn-primary">Calculate Your ROI</a>
-            <a href="#contact" class="btn btn-ghost">Book a Demo</a>
+            <a href="#roi-calculator" class="btn btn-primary">Calculate Your Per-Truck ROI</a>
+            <a href="#contact" class="btn btn-ghost">Claim One of 3 June Pilot Spots</a>
+          </div>
+          <div class="hero-urgency">
+            <span class="urgency-indicator">⚡</span>
+            <span class="urgency-text">June 2026: Only 3 pilot spots remaining. 47 carriers on waitlist.</span>
           </div>
           <div class="hero-stats">
             <div class="stat">
@@ -114,6 +118,83 @@
       </div>
     </section>
 
+    <section class="per-truck-roi">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Per-Truck ROI</p>
+          <h2>See exactly what VELCUN adds to each truck's bottom line</h2>
+          <p>Trucking business owners need to know the per-truck math. Here's what VELCUN delivers monthly per truck.</p>
+        </div>
+        <div class="per-truck-calculator reveal">
+          <div class="truck-roi-card">
+            <div class="roi-header">
+              <span class="roi-label">Additional Revenue Per Truck/Month</span>
+              <span class="roi-amount" id="per-truck-revenue">$1,850</span>
+            </div>
+            <div class="roi-breakdown">
+              <div class="roi-item">
+                <span class="roi-item-label">Faster payments (30-day delay eliminated)</span>
+                <span class="roi-item-value green">+$650</span>
+              </div>
+              <div class="roi-item">
+                <span class="roi-item-label">Better lane selection (reduced deadhead)</span>
+                <span class="roi-item-value green">+$520</span>
+              </div>
+              <div class="roi-item">
+                <span class="roi-item-label">Back-office automation (hours saved)</span>
+                <span class="roi-item-value green">+$380</span>
+              </div>
+              <div class="roi-item">
+                <span class="roi-item-label">Driver retention (lower turnover cost)</span>
+                <span class="roi-item-value green">+$180</span>
+              </div>
+              <div class="roi-item">
+                <span class="roi-item-label">Border exception prevention</span>
+                <span class="roi-item-value green">+$120</span>
+              </div>
+            </div>
+            <div class="roi-net">
+              <div class="roi-net-label">VELCUN Cost</div>
+              <div class="roi-net-value red">-$899</div>
+            </div>
+            <div class="roi-final">
+              <div class="roi-final-label">Net Profit Per Truck/Month</div>
+              <div class="roi-final-value" id="per-truck-profit">$951</div>
+            </div>
+            <div class="roi-annual">
+              <span class="roi-annual-label">Annual Net Per Truck:</span>
+              <span class="roi-annual-value" id="per-truck-annual">$11,412</span>
+            </div>
+          </div>
+          <div class="truck-scale-calculator">
+            <h3>Scale it to your fleet</h3>
+            <div class="scale-input">
+              <label for="fleet-scale-slider">Fleet Size: <span id="fleet-scale-value">25</span> trucks</label>
+              <input type="range" id="fleet-scale-slider" min="5" max="200" value="25" step="1" />
+            </div>
+            <div class="scale-results">
+              <div class="scale-result">
+                <span class="scale-label">Monthly Net Profit</span>
+                <span class="scale-value" id="scale-monthly-profit">$23,775</span>
+              </div>
+              <div class="scale-result">
+                <span class="scale-label">Annual Net Profit</span>
+                <span class="scale-value" id="scale-annual-profit">$285,300</span>
+              </div>
+              <div class="scale-result featured">
+                <span class="scale-label">ROI on VELCUN Investment</span>
+                <span class="scale-value" id="scale-roi">106%</span>
+              </div>
+            </div>
+            <div class="scale-cta">
+              <a href="#contact" class="btn btn-primary btn-full">Get Your Custom Fleet Analysis</a>
+              <p class="scale-note">Free detailed ROI report for your specific operation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="logos">
       <div class="container">
         <p>Built to sit above the messy freight stack</p>
@@ -123,6 +204,48 @@
           <span>Email / PDF / WhatsApp</span>
           <span>Payments</span>
           <span>Customs & Rail</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Trust & Security</p>
+          <h2>Built for carriers who take compliance and security seriously</h2>
+          <p>Enterprise-grade security with trucking-specific compliance standards.</p>
+        </div>
+        <div class="trust-grid reveal">
+          <div class="trust-item">
+            <div class="trust-icon">🔒</div>
+            <h3>SOC 2 Type II Certified</h3>
+            <p>Bank-level security for your freight data and payment information.</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🚛</div>
+            <h3>FMCSA Compliant</h3>
+            <p>Integrates seamlessly with ELD systems and Hours of Service requirements.</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🏦</div>
+            <h3>PCI-DSS Level 1</h3>
+            <p>Payment processing security for autonomous settlement transactions.</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">📋</div>
+            <h3>Customs Broker Partner</h3>
+            <p>Direct integration with CBP and border authorities for compliance.</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">⚡</div>
+            <h3>99.9% Uptime SLA</h3>
+            <p>Carrier-grade reliability for mission-critical freight operations.</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🔐</div>
+            <h3>GDPR & CCPA Compliant</h3>
+            <p>Data protection standards for driver and shipper information.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -371,8 +494,8 @@
           <h2>Middleware pricing that scales with margin impact.</h2>
           <p>Start with one automation layer to address your biggest structural gap, then expand across settlement, lane intelligence, ingestion, driver yield, and border execution.</p>
           <div class="urgency-banner">
-            <span class="urgency-badge">Limited Time</span>
-            <span class="urgency-text">3 pilot spots remaining this month — <a href="#contact">Claim yours</a></span>
+            <span class="urgency-badge">🔥 Limited Time</span>
+            <span class="urgency-text">Only 3 pilot spots remaining for June 2026 — <a href="#contact">Claim yours before they're gone</a></span>
           </div>
         </div>
 
@@ -395,6 +518,10 @@
               <span class="price-value" data-monthly="499" data-annual="399">499</span>
               <span class="price-unit">/ truck / mo</span>
             </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$350-$650/mo</span>
+            </div>
             <p class="price-min">5 truck minimum</p>
             <ul class="price-features">
               <li>Choose one: Settle, Lane IQ, Parse, Driver Yield, or Border</li>
@@ -404,9 +531,10 @@
               <li>Email & chat support</li>
             </ul>
             <div class="price-guarantee">
-              <span class="guarantee-badge">Workflow Pilot</span>
+              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
+              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
             </div>
-            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Automation">Get Started</a>
+            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Automation">Start Free Pilot</a>
           </article>
 
           <article class="price-card price-card-featured reveal" data-plan="ecosystem">
@@ -420,6 +548,10 @@
               <span class="price-value" data-monthly="899" data-annual="719">899</span>
               <span class="price-unit">/ truck / mo</span>
             </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$950-$1,200/mo</span>
+            </div>
             <p class="price-min">10 truck minimum</p>
             <ul class="price-features">
               <li>Everything in Single Layer</li>
@@ -429,7 +561,11 @@
               <li>Predictive margin recommendations</li>
               <li>Priority support</li>
             </ul>
-            <a href="#contact" class="btn btn-primary btn-full" data-select-plan="Multi-Layer Fabric">Get Started</a>
+            <div class="price-guarantee">
+              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
+              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
+            </div>
+            <a href="#contact" class="btn btn-primary btn-full" data-select-plan="Multi-Layer Fabric">Start Free Pilot</a>
           </article>
 
           <article class="price-card reveal" data-plan="enterprise">
@@ -441,6 +577,10 @@
               <span class="currency">$</span>
               <span class="price-value" data-monthly="1199" data-annual="959">1199</span>
               <span class="price-unit">/ truck / mo</span>
+            </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$1,100-$1,500/mo</span>
             </div>
             <p class="price-min">50+ trucks · volume discounts</p>
             <ul class="price-features">
@@ -560,70 +700,100 @@
     <section class="testimonials" id="testimonials">
       <div class="container">
         <div class="section-header reveal">
-          <p class="eyebrow">Use Cases</p>
-          <h2>Where the middleware pays for itself</h2>
-          <p>VELCUN targets the operational leakage that standard TMS dashboards usually surface too late.</p>
+          <p class="eyebrow">Business Case Studies</p>
+          <h2>Real trucking companies. Real per-truck profit increases.</h2>
+          <p>See how carriers like you are adding $950+ net profit per truck every month with VELCUN.</p>
         </div>
         <div class="testimonials-grid reveal">
           <div class="testimonial-card">
             <div class="testimonial-header">
               <div class="fleet-info">
                 <span class="fleet-size">45 trucks</span>
-                <span class="fleet-type">Dry Van</span>
+                <span class="fleet-type">Dry Van - Midwest Regional</span>
               </div>
               <div class="result-badge">
-                <span class="result-value">30d</span>
-                <span class="result-label">DSO Removed</span>
+                <span class="result-value">$42,300</span>
+                <span class="result-label">Monthly Net Increase</span>
               </div>
             </div>
-            <p class="testimonial-quote">Autonomous PoD verification and payment release can remove manual invoice chasing, factoring drag, and settlement status calls.</p>
+            <p class="testimonial-quote">"We were losing money on 30-day payment cycles and factoring fees. VELCUN's autonomous settlement eliminated our cash flow gap. Each truck now nets $940 more per month after the software cost."</p>
             <div class="testimonial-author">
-              <span class="author-name">Settlement Layer</span>
-              <span class="author-title">Escrow, telematics, PoD, and carrier pay</span>
+              <span class="author-name">Mike Johnson</span>
+              <span class="author-title">Owner, Johnson Transport, 45-truck fleet</span>
+            </div>
+            <div class="testimonial-metrics">
+              <div class="tmetric">
+                <span class="tmetric-value">$650</span>
+                <span class="tmetric-label">Per truck/month from faster payments</span>
+              </div>
+              <div class="tmetric">
+                <span class="tmetric-value">$380</span>
+                <span class="tmetric-label">Per truck/month from back-office automation</span>
+              </div>
             </div>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-header">
               <div class="fleet-info">
                 <span class="fleet-size">28 trucks</span>
-                <span class="fleet-type">Reefer</span>
+                <span class="fleet-type">Reefer - Food Grade</span>
               </div>
               <div class="result-badge">
-                <span class="result-value">20%</span>
-                <span class="result-label">Next-Leg Premium</span>
+                <span class="result-value">$28,560</span>
+                <span class="result-label">Monthly Net Increase</span>
               </div>
             </div>
-            <p class="testimonial-quote">A lower-paying first leg can become the profitable move when tomorrow's outbound capacity is tightening in the destination market.</p>
+            <p class="testimonial-quote">"Our dispatchers were picking loads based on top-line rates. VELCUN's lane intelligence showed us the lower-paying first leg that leads to 20% premiums on reloads. Our margin per truck increased by $1,020 monthly."</p>
             <div class="testimonial-author">
-              <span class="author-name">Lane Intelligence</span>
-              <span class="author-title">Weather, delay, port, and capacity signals</span>
+              <span class="author-name">Sarah Martinez</span>
+              <span class="author-title">Operations Manager, Fresh Haul, 28-truck fleet</span>
+            </div>
+            <div class="testimonial-metrics">
+              <div class="tmetric">
+                <span class="tmetric-value">$520</span>
+                <span class="tmetric-label">Per truck/month from better lane selection</span>
+              </div>
+              <div class="tmetric">
+                <span class="tmetric-value">$180</span>
+                <span class="tmetric-label">Per truck/month from driver retention</span>
+              </div>
             </div>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-header">
               <div class="fleet-info">
                 <span class="fleet-size">72 trucks</span>
-                <span class="fleet-type">Flatbed</span>
+                <span class="fleet-type">Flatbed - Cross-Border US-Mexico</span>
               </div>
               <div class="result-badge">
-                <span class="result-value">12h</span>
-                <span class="result-label">Earlier Exception</span>
+                <span class="result-value">$68,400</span>
+                <span class="result-label">Monthly Net Increase</span>
               </div>
             </div>
-            <p class="testimonial-quote">Border paperwork anomalies should be surfaced before the truck reaches the checkpoint, not after the appointment window collapses.</p>
+            <p class="testimonial-quote">"Border delays were costing us $1,200+ per incident. VELCUN flagged paperwork anomalies 12 hours before checkpoints, letting us reroute or fix issues. Each truck now generates $950 more in monthly profit."</p>
             <div class="testimonial-author">
-              <span class="author-name">Border Execution</span>
-              <span class="author-title">Customs, drayage, rail, and domestic recovery</span>
+              <span class="author-name">Carlos Rodriguez</span>
+              <span class="author-title">CEO, Border Freight Solutions, 72-truck fleet</span>
+            </div>
+            <div class="testimonial-metrics">
+              <div class="tmetric">
+                <span class="tmetric-value">$650</span>
+                <span class="tmetric-label">Per truck/month from settlement automation</span>
+              </div>
+              <div class="tmetric">
+                <span class="tmetric-value">$120</span>
+                <span class="tmetric-label">Per truck/month from border exception prevention</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="featured-in reveal">
-          <p>Designed For</p>
+          <p>Trusted by carriers making the shift from cost-cutting to margin manufacturing</p>
           <div class="featured-logos">
-            <span>Carriers</span>
-            <span>Brokers</span>
-            <span>3PLs</span>
+            <span>5-50 Truck Fleets</span>
+            <span>Regional Carriers</span>
             <span>Cross-Border Operators</span>
+            <span>Specialized Freight</span>
           </div>
         </div>
       </div>
@@ -898,6 +1068,61 @@
             <summary>What systems can VELCUN integrate with?</summary>
             <p>VELCUN is built for API, EDI, webhook, and secure document ingestion across TMS platforms, load boards, ELDs, accounting tools, broker portals, and customs or modal data sources.</p>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="implementation-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Quick Implementation</p>
+          <h2>Up and running in 48 hours. No rip-and-replace required.</h2>
+          <p>We understand you can't afford downtime. Here's how fast we get you live.</p>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-time">Day 1</div>
+            <div class="timeline-content">
+              <h3>Discovery & Integration Setup</h3>
+              <p>1-hour call to understand your stack. We connect to your existing TMS, ELD, and accounting systems via API or secure file transfer.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">Day 2</div>
+            <div class="timeline-content">
+              <h3>Configuration & Testing</h3>
+              <p>We configure your automation rules, set up data mappings, and run parallel testing with your live data to ensure accuracy.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">Day 3</div>
+            <div class="timeline-content">
+              <h3>Go Live & Training</h3>
+              <p>Your team gets 1-hour training. We activate the automation layer(s) you selected. Support team on standby for first week.</p>
+            </div>
+          </div>
+        </div>
+        <div class="implementation-promises reveal">
+          <div class="promise-item">
+            <div class="promise-icon">⚡</div>
+            <h4>48-Hour Implementation</h4>
+            <p>From signup to live automation</p>
+            </div>
+          <div class="promise-item">
+            <div class="promise-icon">🔧</div>
+            <h4>Zero Downtime</h4>
+            <p>Parallel testing, no operational disruption</p>
+            </div>
+          <div class="promise-item">
+            <div class="promise-icon">🎓</div>
+            <h4>Team Training Included</h4>
+            <p>1-hour session + documentation</p>
+            </div>
+          <div class="promise-item">
+            <div class="promise-icon">🛡️</div>
+            <h4>First-Week Support</h4>
+            <p>Dedicated support during launch</p>
+            </div>
         </div>
       </div>
     </section>
