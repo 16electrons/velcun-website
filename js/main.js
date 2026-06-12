@@ -95,6 +95,61 @@
 
   reveals.forEach((el) => revealObserver.observe(el));
 
+  // Multi-step form functionality
+  const formSteps = document.querySelectorAll('.form-step');
+  const progressSteps = document.querySelectorAll('.progress-step');
+  const nextButtons = document.querySelectorAll('.next-step');
+  const prevButtons = document.querySelectorAll('.prev-step');
+  let currentStep = 1;
+
+  function updateFormStep(step) {
+    formSteps.forEach(s => s.classList.remove('active'));
+    progressSteps.forEach(p => {
+      p.classList.remove('active', 'completed');
+      const stepNum = parseInt(p.dataset.step);
+      if (stepNum === step) {
+        p.classList.add('active');
+      } else if (stepNum < step) {
+        p.classList.add('completed');
+      }
+    });
+    
+    const activeStep = document.querySelector(`.form-step[data-step="${step}"]`);
+    if (activeStep) {
+      activeStep.classList.add('active');
+    }
+    currentStep = step;
+  }
+
+  nextButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+      const requiredFields = currentStepEl.querySelectorAll('[required]');
+      let valid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          valid = false;
+          field.style.borderColor = 'var(--pending)';
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      
+      if (valid && currentStep < 3) {
+        updateFormStep(currentStep + 1);
+      }
+    });
+  });
+
+  prevButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        updateFormStep(currentStep - 1);
+      }
+    });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -200,6 +255,108 @@
       load.classList.add('active');
       const loadId = load.dataset.load;
       renderTrucks(loadId);
+    });
+  });
+
+  // Enhanced ROI Calculator
+  const roiCalculator = {
+    fleetSize: document.getElementById('roi-fleet-size'),
+    dispatchTime: document.getElementById('roi-dispatch-time'),
+    deadhead: document.getElementById('roi-deadhead'),
+    turnover: document.getElementById('roi-turnover'),
+    calculateBtn: document.getElementById('calculate-roi'),
+    savings: document.getElementById('roi-savings'),
+    dispatchSavings: document.getElementById('roi-dispatch-savings'),
+    deadheadSavings: document.getElementById('roi-deadhead-savings'),
+    turnoverSavings: document.getElementById('roi-turnover-savings'),
+
+    calculate() {
+      const fleet = parseInt(this.fleetSize.value) || 25;
+      const dispatchHours = parseFloat(this.dispatchTime.value) || 4;
+      const deadheadPct = parseInt(this.deadhead.value) || 15;
+      const turnoverPct = parseInt(this.turnover.value) || 30;
+
+      // Calculate savings based on industry benchmarks
+      const loadsPerTruckPerYear = 52;
+      const totalLoads = fleet * loadsPerTruckPerYear;
+      
+      // Dispatch efficiency savings: reduce from current to 0.5 hours per load
+      const dispatchSavings = (dispatchHours - 0.5) * totalLoads * 50; // $50/hr dispatcher cost
+      
+      // Deadhead reduction: from current to 8%
+      const deadheadReduction = (deadheadPct - 8) / 100;
+      const avgRevenuePerLoad = 2000;
+      const deadheadSavings = totalLoads * avgRevenuePerLoad * deadheadReduction;
+      
+      // Driver retention savings: reduce turnover by 50%
+      const turnoverReduction = turnoverPct * 0.5;
+      const costPerDriverTurnover = 8000;
+      const turnoverSavings = fleet * (turnoverReduction / 100) * costPerDriverTurnover;
+
+      const totalSavings = dispatchSavings + deadheadSavings + turnoverSavings;
+
+      // Update UI
+      this.savings.textContent = `$${Math.round(totalSavings).toLocaleString()}`;
+      this.dispatchSavings.textContent = `$${Math.round(dispatchSavings).toLocaleString()}`;
+      this.deadheadSavings.textContent = `$${Math.round(deadheadSavings).toLocaleString()}`;
+      this.turnoverSavings.textContent = `$${Math.round(turnoverSavings).toLocaleString()}`;
+    }
+  };
+
+  if (roiCalculator.calculateBtn) {
+    roiCalculator.calculateBtn.addEventListener('click', () => roiCalculator.calculate());
+    // Auto-calculate on input change
+    [roiCalculator.fleetSize, roiCalculator.dispatchTime, roiCalculator.deadhead, roiCalculator.turnover].forEach(input => {
+      input.addEventListener('input', () => roiCalculator.calculate());
+    });
+    // Initial calculation
+    roiCalculator.calculate();
+  }
+
+  // Sticky CTA functionality
+  const stickyCta = document.getElementById('sticky-cta');
+  let hasShownStickyCta = false;
+
+  window.addEventListener('scroll', () => {
+    if (!hasShownStickyCta && window.scrollY > 600) {
+      stickyCta.classList.add('visible');
+      hasShownStickyCta = true;
+    }
+  });
+
+  // Exit intent popup functionality
+  const exitPopup = document.getElementById('exit-popup');
+  const popupClose = document.getElementById('popup-close');
+  let hasShownExitPopup = false;
+  let exitIntentTriggered = false;
+
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !hasShownExitPopup && !exitIntentTriggered) {
+      exitIntentTriggered = true;
+      // Delay showing popup to avoid immediate trigger
+      setTimeout(() => {
+        if (!hasShownExitPopup) {
+          exitPopup.classList.add('visible');
+          hasShownExitPopup = true;
+        }
+      }, 500);
+    }
+  });
+
+  popupClose.addEventListener('click', () => {
+    exitPopup.classList.remove('visible');
+  });
+
+  exitPopup.addEventListener('click', (e) => {
+    if (e.target === exitPopup) {
+      exitPopup.classList.remove('visible');
+    }
+  });
+
+  // Close popup when clicking CTA links
+  document.querySelectorAll('.popup-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      exitPopup.classList.remove('visible');
     });
   });
 })();

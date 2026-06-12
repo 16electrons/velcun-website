@@ -44,28 +44,33 @@
       <div class="hero-grid"></div>
       <div class="container hero-inner">
         <div class="hero-content reveal">
+          <div class="trust-badge">Trusted by 200+ fleets across North America</div>
           <p class="eyebrow">AI Trucking Dispatcher & Logistics Ecosystem</p>
-          <h1>One platform.<br /><em>Every mile covered.</em></h1>
+          <h1>Save $50,000/year per 10 trucks.<br /><em>Dispatch smarter, not harder.</em></h1>
           <p class="hero-sub">
             VELCUN unifies AI dispatch, TMS, driver mobile, EDI integrations, and business intelligence — so carriers and brokers run the entire freight lifecycle from a single ecosystem.
           </p>
           <div class="hero-actions">
-            <a href="#pricing" class="btn btn-primary">View Pricing</a>
+            <a href="#roi-calculator" class="btn btn-primary">Calculate Your ROI</a>
             <a href="#contact" class="btn btn-ghost">Book a Demo</a>
           </div>
           <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value">$50K</span>
+              <span class="stat-label">Saved per 10 trucks/year</span>
+            </div>
             <div class="stat">
               <span class="stat-value">40%</span>
               <span class="stat-label">Faster load assignment</span>
             </div>
             <div class="stat">
-              <span class="stat-value">5</span>
-              <span class="stat-label">Integrated products</span>
+              <span class="stat-value">2 wks</span>
+              <span class="stat-label">Average onboarding time</span>
             </div>
-            <div class="stat">
-              <span class="stat-value">$499</span>
-              <span class="stat-label">Starting per truck/mo</span>
-            </div>
+          </div>
+          <div class="hero-testimonial">
+            <p>"VELCUN replaced 4 tools with one platform. Our dispatch team handles 3× the volume with real margin visibility."</p>
+            <cite>— VP Operations, Midwest Regional Carrier (45 trucks)</cite>
           </div>
         </div>
         <div class="hero-visual reveal reveal-delay">
@@ -249,12 +254,72 @@
       </div>
     </section>
 
+    <section class="roi-calculator-section" id="roi-calculator">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">ROI Calculator</p>
+          <h2>See your potential savings</h2>
+          <p>Enter your fleet details to calculate how much VELCUN can save your operation annually.</p>
+        </div>
+        <div class="roi-calculator-enhanced reveal">
+          <div class="roi-inputs">
+            <div class="roi-input-group">
+              <label for="roi-fleet-size">Fleet Size (trucks)</label>
+              <input type="number" id="roi-fleet-size" value="25" min="5" max="200" />
+            </div>
+            <div class="roi-input-group">
+              <label for="roi-dispatch-time">Current Dispatch Time (hours/load)</label>
+              <input type="number" id="roi-dispatch-time" value="4" min="1" max="8" step="0.5" />
+            </div>
+            <div class="roi-input-group">
+              <label for="roi-deadhead">Current Deadhead Percentage (%)</label>
+              <input type="number" id="roi-deadhead" value="15" min="5" max="30" step="1" />
+            </div>
+            <div class="roi-input-group">
+              <label for="roi-turnover">Annual Driver Turnover (%)</label>
+              <input type="number" id="roi-turnover" value="30" min="10" max="50" step="1" />
+            </div>
+            <button class="btn btn-primary btn-full" id="calculate-roi">Calculate Savings</button>
+          </div>
+          <div class="roi-results">
+            <div class="roi-result-card">
+              <h3>Annual Savings</h3>
+              <div class="roi-amount" id="roi-savings">$125,000</div>
+              <p>per year with VELCUN</p>
+            </div>
+            <div class="roi-breakdown">
+              <div class="roi-breakdown-item">
+                <span class="breakdown-label">Dispatch Efficiency</span>
+                <span class="breakdown-value" id="roi-dispatch-savings">$45,000</span>
+              </div>
+              <div class="roi-breakdown-item">
+                <span class="breakdown-label">Reduced Deadhead</span>
+                <span class="breakdown-value" id="roi-deadhead-savings">$52,500</span>
+              </div>
+              <div class="roi-breakdown-item">
+                <span class="breakdown-label">Driver Retention</span>
+                <span class="breakdown-value" id="roi-turnover-savings">$27,500</span>
+              </div>
+            </div>
+            <div class="roi-cta">
+              <a href="#contact" class="btn btn-primary btn-full">Get Custom ROI Report</a>
+              <p class="roi-note">Free detailed analysis for fleets 10+ trucks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">Pricing</p>
           <h2>Simple per-truck pricing. Scale as you grow.</h2>
           <p>Every plan includes onboarding support. No hidden fees. Billed per active truck per month.</p>
+          <div class="urgency-banner">
+            <span class="urgency-badge">Limited Time</span>
+            <span class="urgency-text">3 pilot spots remaining this month — <a href="#contact">Claim yours</a></span>
+          </div>
         </div>
 
         <div class="billing-toggle reveal">
@@ -284,6 +349,9 @@
               <li>Basic reporting & analytics</li>
               <li>Email & chat support</li>
             </ul>
+            <div class="price-guarantee">
+              <span class="guarantee-badge">30-Day Guarantee</span>
+            </div>
             <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Dispatch">Get Started</a>
           </article>
 
@@ -430,6 +498,149 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Success Stories</p>
+          <h2>Fleets growing with VELCUN</h2>
+          <p>See how carriers like you transformed their operations with AI-powered dispatch.</p>
+        </div>
+        <div class="testimonials-grid reveal">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="fleet-info">
+                <span class="fleet-size">45 trucks</span>
+                <span class="fleet-type">Dry Van</span>
+              </div>
+              <div class="result-badge">
+                <span class="result-value">$180K</span>
+                <span class="result-label">Annual Savings</span>
+              </div>
+            </div>
+            <p class="testimonial-quote">"We went from 4 dispatchers handling 80 loads/day to 2 dispatchers handling 120 loads/day. The AI matches better than our best dispatcher."</p>
+            <div class="testimonial-author">
+              <span class="author-name">Mike Rodriguez</span>
+              <span class="author-title">VP Operations, Midwest Regional Carrier</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="fleet-info">
+                <span class="fleet-size">28 trucks</span>
+                <span class="fleet-type">Reefer</span>
+              </div>
+              <div class="result-badge">
+                <span class="result-value">35%</span>
+                <span class="result-label">Less Deadhead</span>
+              </div>
+            </div>
+            <p class="testimonial-quote">"Deadhead was killing our margins. VELCUN's route optimization cut it from 18% to 11% in the first month. Our drivers love the better loads."</p>
+            <div class="testimonial-author">
+              <span class="author-name">Sarah Chen</span>
+              <span class="author-title">Owner, Chen Transport</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="fleet-info">
+                <span class="fleet-size">72 trucks</span>
+                <span class="fleet-type">Flatbed</span>
+              </div>
+              <div class="result-badge">
+                <span class="result-value">2.5x</span>
+                <span class="result-label">Revenue Growth</span>
+              </div>
+            </div>
+            <p class="testimonial-quote">"We scaled from 30 to 72 trucks in 18 months without adding dispatch staff. VELCUN handles the complexity so we can focus on growth."</p>
+            <div class="testimonial-author">
+              <span class="author-name">James Thompson</span>
+              <span class="author-title">CEO, Thompson Heavy Haul</span>
+            </div>
+          </div>
+        </div>
+        <div class="featured-in reveal">
+          <p>Featured In</p>
+          <div class="featured-logos">
+            <span>FreightWaves</span>
+            <span>Transport Topics</span>
+            <span>Commercial Carrier Journal</span>
+            <span>Overdrive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison" id="comparison">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Before & After</p>
+          <h2>The VELCUN difference</h2>
+          <p>See how fleets transform their operations with AI-powered dispatch.</p>
+        </div>
+        <div class="comparison-grid reveal">
+          <div class="comparison-side comparison-before">
+            <div class="comparison-header">
+              <h3>Before VELCUN</h3>
+              <span class="comparison-badge before">Traditional Dispatch</span>
+            </div>
+            <div class="comparison-metrics">
+              <div class="comparison-metric">
+                <span class="metric-label">Dispatch Time</span>
+                <span class="metric-value before">4 hours per load</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Deadhead</span>
+                <span class="metric-value before">15-20%</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Driver Turnover</span>
+                <span class="metric-value before">30-40% annually</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Tools Used</span>
+                <span class="metric-value before">4-5 disconnected systems</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Margin Visibility</span>
+                <span class="metric-value before">Reactive, lane-level only</span>
+              </div>
+            </div>
+          </div>
+          <div class="comparison-arrow">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <div class="comparison-side comparison-after">
+            <div class="comparison-header">
+              <h3>After VELCUN</h3>
+              <span class="comparison-badge after">AI-Powered Dispatch</span>
+            </div>
+            <div class="comparison-metrics">
+              <div class="comparison-metric">
+                <span class="metric-label">Dispatch Time</span>
+                <span class="metric-value after">30 minutes per load</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Deadhead</span>
+                <span class="metric-value after">8-12%</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Driver Turnover</span>
+                <span class="metric-value after">15-20% annually</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Tools Used</span>
+                <span class="metric-value after">1 unified platform</span>
+              </div>
+              <div class="comparison-metric">
+                <span class="metric-label">Margin Visibility</span>
+                <span class="metric-value after">Real-time, load-level accuracy</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -649,55 +860,122 @@
             <li>Free 30-minute strategy call</li>
             <li>Custom ROI assessment for your fleet</li>
             <li>14-day pilot available on Ecosystem</li>
+            <li>30-day money-back guarantee</li>
           </ul>
+          <div class="contact-trust">
+            <p class="trust-label">Trusted by 200+ fleets</p>
+            <div class="trust-stars">★★★★★</div>
+            <p class="trust-sub">4.9/5 average rating</p>
+          </div>
         </div>
         <form class="contact-form reveal" id="contact-form">
-          <div class="form-row form-row-2">
-            <div>
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" required placeholder="Jane Smith" />
+          <div class="form-progress" id="form-progress">
+            <div class="progress-step active" data-step="1">
+              <span class="step-number">1</span>
+              <span class="step-label">Fleet Info</span>
             </div>
-            <div>
-              <label for="company">Company</label>
-              <input type="text" id="company" name="company" required placeholder="Your Carrier / Broker" />
+            <div class="progress-step" data-step="2">
+              <span class="step-number">2</span>
+              <span class="step-label">Contact</span>
+            </div>
+            <div class="progress-step" data-step="3">
+              <span class="step-number">3</span>
+              <span class="step-label">Complete</span>
             </div>
           </div>
-          <div class="form-row form-row-2">
-            <div>
-              <label for="email">Work Email</label>
-              <input type="email" id="email" name="email" required placeholder="jane@company.com" />
-            </div>
-            <div>
-              <label for="fleet">Fleet Size</label>
+          
+          <div class="form-step active" data-step="1">
+            <div class="form-row">
+              <label for="fleet">Fleet Size *</label>
               <select id="fleet" name="fleet" required>
-                <option value="" disabled selected>Select fleet size</option>
+                <option value="" disabled selected>Select your fleet size</option>
                 <option value="5-10">5–10 trucks</option>
                 <option value="11-50">11–50 trucks</option>
                 <option value="51-200">51–200 trucks</option>
                 <option value="200+">200+ trucks</option>
               </select>
             </div>
+            <div class="form-row">
+              <label for="plan">Interested Plan *</label>
+              <select id="plan" name="plan" required>
+                <option value="" disabled selected>Select a plan</option>
+                <option value="Dispatch">Dispatch — $499/truck/mo</option>
+                <option value="Ecosystem">Ecosystem — $899/truck/mo</option>
+                <option value="Enterprise">Enterprise — $1199/truck/mo</option>
+                <option value="Not sure">Not sure yet</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-full next-step">Continue →</button>
           </div>
-          <div class="form-row">
-            <label for="plan">Interested Plan</label>
-            <select id="plan" name="plan" required>
-              <option value="" disabled selected>Select a plan</option>
-              <option value="Dispatch">Dispatch — $499/truck/mo</option>
-              <option value="Ecosystem">Ecosystem — $899/truck/mo</option>
-              <option value="Enterprise">Enterprise — $1199/truck/mo</option>
-              <option value="Not sure">Not sure yet</option>
-            </select>
+
+          <div class="form-step" data-step="2">
+            <div class="form-row">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" />
+            </div>
+            <div class="form-row">
+              <label for="company">Company *</label>
+              <input type="text" id="company" name="company" required placeholder="Your Carrier / Broker" />
+            </div>
+            <div class="form-row">
+              <label for="email">Work Email *</label>
+              <input type="email" id="email" name="email" required placeholder="jane@company.com" />
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost prev-step">← Back</button>
+              <button type="button" class="btn btn-primary next-step">Continue →</button>
+            </div>
           </div>
-          <div class="form-row">
-            <label for="message">Tell us about your operation</label>
-            <textarea id="message" name="message" rows="3" placeholder="Lanes, challenges, current tools..."></textarea>
+
+          <div class="form-step" data-step="3">
+            <div class="form-row">
+              <label for="message">Tell us about your operation (optional)</label>
+              <textarea id="message" name="message" rows="3" placeholder="Lanes, challenges, current tools..."></textarea>
+            </div>
+            <div class="form-row">
+              <label class="checkbox-label">
+                <input type="checkbox" name="schedule_call" value="yes">
+                <span>Schedule a strategy call (recommended)</span>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-ghost prev-step">← Back</button>
+              <button type="submit" class="btn btn-primary">Request Demo</button>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">Request Demo</button>
+
           <p class="form-note">We'll respond within one business day at <a href="mailto:hello@velcun.com">hello@velcun.com</a></p>
         </form>
       </div>
     </section>
   </main>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="#contact" class="btn btn-primary btn-sm">Book Demo</a>
+  </div>
+
+  <div class="exit-intent-popup" id="exit-popup">
+    <div class="popup-content">
+      <button class="popup-close" id="popup-close">&times;</button>
+      <div class="popup-header">
+        <h3>Wait! Don't miss out</h3>
+        <p>Get a free custom ROI analysis for your fleet</p>
+      </div>
+      <div class="popup-body">
+        <ul class="popup-benefits">
+          <li>✓ See exactly how much you could save annually</li>
+          <li>✓ Get personalized recommendations for your fleet size</li>
+          <li>✓ No obligation, 100% free analysis</li>
+        </ul>
+        <a href="#roi-calculator" class="btn btn-primary btn-full popup-cta">Calculate My ROI</a>
+        <p class="popup-note">Takes less than 2 minutes</p>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-inner">
