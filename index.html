@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260612h" />
+  <link rel="stylesheet" href="css/styles.css?v=20260612i" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -261,6 +261,216 @@
         <div class="integration-cta reveal">
           <p>Don't see your system? <strong>We add new integrations weekly.</strong></p>
           <a href="#contact" class="btn btn-ghost">Request Your Integration</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2>Invest per truck to manufacture margin</h2>
+          <p>See exactly how much VELCUN costs and the net profit it generates per truck every month.</p>
+          <div class="urgency-banner">
+            <span class="urgency-badge">🔥 Limited Time</span>
+            <span class="urgency-text">3 pilot spots remaining this month — <a href="#contact">Claim yours</a></span>
+          </div>
+        </div>
+
+        <div class="billing-toggle reveal">
+          <span class="billing-label" data-period="monthly">Monthly</span>
+          <button class="toggle-switch" id="billing-toggle" aria-label="Toggle annual billing" aria-pressed="false">
+            <span class="toggle-knob"></span>
+          </button>
+          <span class="billing-label" data-period="annual">Annual <span class="save-badge">Save 20%</span></span>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal" data-plan="dispatch">
+            <div class="price-header">
+              <h3>Single Layer</h3>
+              <p class="price-desc">Address one structural gap with focused automation</p>
+            </div>
+            <div class="price-amount">
+              <span class="currency">$</span>
+              <span class="price-value" data-monthly="499" data-annual="399">499</span>
+              <span class="price-unit">/ truck / mo</span>
+            </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$350-$650/mo</span>
+            </div>
+            <p class="price-min">5 truck minimum</p>
+            <ul class="price-features">
+              <li>Choose one: Settle, Lane IQ, Parse, Driver Yield, or Border</li>
+              <li>Connect your existing TMS/ELD systems</li>
+              <li>Address payment delays, deadhead, or back-office manual work</li>
+              <li>Basic operational reporting</li>
+              <li>Email & chat support</li>
+            </ul>
+            <div class="price-guarantee">
+              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
+              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
+            </div>
+            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Automation">Start Free Pilot</a>
+          </article>
+
+          <article class="price-card price-card-featured reveal" data-plan="ecosystem">
+            <div class="popular-badge">Most Popular</div>
+            <div class="price-header">
+              <h3>Multi-Layer Fabric</h3>
+              <p class="price-desc">Address multiple structural gaps for maximum margin impact</p>
+            </div>
+            <div class="price-amount">
+              <span class="currency">$</span>
+              <span class="price-value" data-monthly="899" data-annual="719">899</span>
+              <span class="price-unit">/ truck / mo</span>
+            </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$950-$1,200/mo</span>
+            </div>
+            <p class="price-min">10 truck minimum</p>
+            <ul class="price-features">
+              <li>Everything in Single Layer</li>
+              <li>4 automation layers: Settle, Lane IQ, Parse, Driver Yield</li>
+              <li>Address payment delays, deadhead, back-office manual work, driver turnover</li>
+              <li>EDI, REST API, and webhook workflows</li>
+              <li>Predictive margin recommendations</li>
+              <li>Priority support</li>
+            </ul>
+            <div class="price-guarantee">
+              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
+              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
+            </div>
+            <a href="#contact" class="btn btn-primary btn-full" data-select-plan="Multi-Layer Fabric">Start Free Pilot</a>
+          </article>
+
+          <article class="price-card reveal" data-plan="enterprise">
+            <div class="price-header">
+              <h3>Full Stack</h3>
+              <p class="price-desc">Complete middleware fabric for fleets, brokers, and 3PLs</p>
+            </div>
+            <div class="price-amount">
+              <span class="currency">$</span>
+              <span class="price-value" data-monthly="1199" data-annual="959">1199</span>
+              <span class="price-unit">/ truck / mo</span>
+            </div>
+            <div class="price-net-profit">
+              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
+              <span class="net-profit-value">+$1,100-$1,500/mo</span>
+            </div>
+            <p class="price-min">50+ trucks · volume discounts</p>
+            <ul class="price-features">
+              <li>Everything in Multi-Layer Fabric</li>
+              <li>Add Border & Multi-Modal execution layer</li>
+              <li>Dedicated customer success manager</li>
+              <li>Custom integrations, agents, and webhooks</li>
+              <li>SSO & advanced security</li>
+              <li>99.9% uptime SLA</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Full Stack">Contact Sales</a>
+          </article>
+        </div>
+
+        <div class="pricing-calculator reveal">
+          <div class="calc-header">
+            <h3>Estimate your monthly cost</h3>
+            <p>Drag the slider to see pricing across middleware tiers</p>
+          </div>
+          <div class="calc-body">
+            <div class="calc-slider-wrap">
+              <label for="fleet-slider">Fleet size: <strong id="fleet-count">25</strong> trucks</label>
+              <input type="range" id="fleet-slider" min="5" max="200" value="25" step="1" />
+              <div class="slider-labels">
+                <span>5</span>
+                <span>200+</span>
+              </div>
+            </div>
+            <div class="calc-results">
+              <div class="calc-result" data-calc-plan="dispatch">
+                <span class="calc-plan-name">Automation</span>
+                <span class="calc-plan-price" id="calc-dispatch">$1,225</span>
+                <span class="calc-plan-period">/mo</span>
+              </div>
+              <div class="calc-result calc-result-featured" data-calc-plan="ecosystem">
+                <span class="calc-plan-name">Execution</span>
+                <span class="calc-plan-price" id="calc-ecosystem">$2,225</span>
+                <span class="calc-plan-period">/mo</span>
+              </div>
+              <div class="calc-result" data-calc-plan="enterprise">
+                <span class="calc-plan-name">Network</span>
+                <span class="calc-plan-price" id="calc-enterprise">$3,225</span>
+                <span class="calc-plan-period">/mo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-compare reveal">
+          <h3>Compare plans</h3>
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Automation</th>
+                  <th class="featured-col">Execution</th>
+                  <th>Network</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>One freight automation layer</td>
+                  <td><span class="check">✓</span></td>
+                  <td class="featured-col"><span class="check">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Existing TMS/ELD integration</td>
+                  <td><span class="check">✓</span></td>
+                  <td class="featured-col"><span class="check">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Autonomous settlement</td>
+                  <td>—</td>
+                  <td class="featured-col"><span class="check">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>EDI, API, and webhooks</td>
+                  <td>—</td>
+                  <td class="featured-col"><span class="check">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Predictive lane intelligence</td>
+                  <td>Basic</td>
+                  <td class="featured-col"><span class="check">✓</span></td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Dedicated CSM</td>
+                  <td>—</td>
+                  <td class="featured-col">—</td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Custom agents</td>
+                  <td>—</td>
+                  <td class="featured-col">—</td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>SLA & SSO</td>
+                  <td>—</td>
+                  <td class="featured-col">—</td>
+                  <td><span class="check">✓</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -565,216 +775,6 @@
               <a href="#contact" class="btn btn-primary btn-full">Get Custom ROI Report</a>
               <p class="roi-note">Free detailed analysis for fleets 10+ trucks</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pricing" id="pricing">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">Pricing</p>
-          <h2>Middleware pricing that scales with margin impact.</h2>
-          <p>Start with one automation layer to address your biggest structural gap, then expand across settlement, lane intelligence, ingestion, driver yield, and border execution.</p>
-          <div class="urgency-banner">
-            <span class="urgency-badge">🔥 Limited Time</span>
-            <span class="urgency-text">Only 3 pilot spots remaining for June 2026 — <a href="#contact">Claim yours before they're gone</a></span>
-          </div>
-        </div>
-
-        <div class="billing-toggle reveal">
-          <span class="billing-label" data-period="monthly">Monthly</span>
-          <button class="toggle-switch" id="billing-toggle" aria-label="Toggle annual billing" aria-pressed="false">
-            <span class="toggle-knob"></span>
-          </button>
-          <span class="billing-label" data-period="annual">Annual <span class="save-badge">Save 20%</span></span>
-        </div>
-
-        <div class="pricing-grid">
-          <article class="price-card reveal" data-plan="dispatch">
-            <div class="price-header">
-              <h3>Single Layer</h3>
-              <p class="price-desc">Address one structural gap with focused automation</p>
-            </div>
-            <div class="price-amount">
-              <span class="currency">$</span>
-              <span class="price-value" data-monthly="499" data-annual="399">499</span>
-              <span class="price-unit">/ truck / mo</span>
-            </div>
-            <div class="price-net-profit">
-              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
-              <span class="net-profit-value">+$350-$650/mo</span>
-            </div>
-            <p class="price-min">5 truck minimum</p>
-            <ul class="price-features">
-              <li>Choose one: Settle, Lane IQ, Parse, Driver Yield, or Border</li>
-              <li>Connect your existing TMS/ELD systems</li>
-              <li>Address payment delays, deadhead, or back-office manual work</li>
-              <li>Basic operational reporting</li>
-              <li>Email & chat support</li>
-            </ul>
-            <div class="price-guarantee">
-              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
-              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
-            </div>
-            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Automation">Start Free Pilot</a>
-          </article>
-
-          <article class="price-card price-card-featured reveal" data-plan="ecosystem">
-            <div class="popular-badge">Most Popular</div>
-            <div class="price-header">
-              <h3>Multi-Layer Fabric</h3>
-              <p class="price-desc">Address multiple structural gaps for maximum margin impact</p>
-            </div>
-            <div class="price-amount">
-              <span class="currency">$</span>
-              <span class="price-value" data-monthly="899" data-annual="719">899</span>
-              <span class="price-unit">/ truck / mo</span>
-            </div>
-            <div class="price-net-profit">
-              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
-              <span class="net-profit-value">+$950-$1,200/mo</span>
-            </div>
-            <p class="price-min">10 truck minimum</p>
-            <ul class="price-features">
-              <li>Everything in Single Layer</li>
-              <li>4 automation layers: Settle, Lane IQ, Parse, Driver Yield</li>
-              <li>Address payment delays, deadhead, back-office manual work, driver turnover</li>
-              <li>EDI, REST API, and webhook workflows</li>
-              <li>Predictive margin recommendations</li>
-              <li>Priority support</li>
-            </ul>
-            <div class="price-guarantee">
-              <span class="guarantee-badge">30-Day Money-Back Guarantee</span>
-              <p class="guarantee-text">If you don't see at least $500 net profit per truck in the first month, we'll refund your investment.</p>
-            </div>
-            <a href="#contact" class="btn btn-primary btn-full" data-select-plan="Multi-Layer Fabric">Start Free Pilot</a>
-          </article>
-
-          <article class="price-card reveal" data-plan="enterprise">
-            <div class="price-header">
-              <h3>Full Stack</h3>
-              <p class="price-desc">Complete middleware fabric for fleets, brokers, and 3PLs</p>
-            </div>
-            <div class="price-amount">
-              <span class="currency">$</span>
-              <span class="price-value" data-monthly="1199" data-annual="959">1199</span>
-              <span class="price-unit">/ truck / mo</span>
-            </div>
-            <div class="price-net-profit">
-              <span class="net-profit-label">Est. Net Profit Per Truck:</span>
-              <span class="net-profit-value">+$1,100-$1,500/mo</span>
-            </div>
-            <p class="price-min">50+ trucks · volume discounts</p>
-            <ul class="price-features">
-              <li>Everything in Multi-Layer Fabric</li>
-              <li>Add Border & Multi-Modal execution layer</li>
-              <li>Dedicated customer success manager</li>
-              <li>Custom integrations, agents, and webhooks</li>
-              <li>SSO & advanced security</li>
-              <li>99.9% uptime SLA</li>
-            </ul>
-            <a href="#contact" class="btn btn-ghost btn-full" data-select-plan="Full Stack">Contact Sales</a>
-          </article>
-        </div>
-
-        <div class="pricing-calculator reveal">
-          <div class="calc-header">
-            <h3>Estimate your monthly cost</h3>
-            <p>Drag the slider to see pricing across middleware tiers</p>
-          </div>
-          <div class="calc-body">
-            <div class="calc-slider-wrap">
-              <label for="fleet-slider">Fleet size: <strong id="fleet-count">25</strong> trucks</label>
-              <input type="range" id="fleet-slider" min="5" max="200" value="25" step="1" />
-              <div class="slider-labels">
-                <span>5</span>
-                <span>200+</span>
-              </div>
-            </div>
-            <div class="calc-results">
-              <div class="calc-result" data-calc-plan="dispatch">
-                <span class="calc-plan-name">Automation</span>
-                <span class="calc-plan-price" id="calc-dispatch">$1,225</span>
-                <span class="calc-plan-period">/mo</span>
-              </div>
-              <div class="calc-result calc-result-featured" data-calc-plan="ecosystem">
-                <span class="calc-plan-name">Execution</span>
-                <span class="calc-plan-price" id="calc-ecosystem">$2,225</span>
-                <span class="calc-plan-period">/mo</span>
-              </div>
-              <div class="calc-result" data-calc-plan="enterprise">
-                <span class="calc-plan-name">Network</span>
-                <span class="calc-plan-price" id="calc-enterprise">$3,225</span>
-                <span class="calc-plan-period">/mo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-compare reveal">
-          <h3>Compare plans</h3>
-          <div class="compare-table-wrap">
-            <table class="compare-table">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Automation</th>
-                  <th class="featured-col">Execution</th>
-                  <th>Network</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>One freight automation layer</td>
-                  <td><span class="check">✓</span></td>
-                  <td class="featured-col"><span class="check">✓</span></td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Existing TMS/ELD integration</td>
-                  <td><span class="check">✓</span></td>
-                  <td class="featured-col"><span class="check">✓</span></td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Autonomous settlement</td>
-                  <td>—</td>
-                  <td class="featured-col"><span class="check">✓</span></td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>EDI, API, and webhooks</td>
-                  <td>—</td>
-                  <td class="featured-col"><span class="check">✓</span></td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Predictive lane intelligence</td>
-                  <td>Basic</td>
-                  <td class="featured-col"><span class="check">✓</span></td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Dedicated CSM</td>
-                  <td>—</td>
-                  <td class="featured-col">—</td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Custom agents</td>
-                  <td>—</td>
-                  <td class="featured-col">—</td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>SLA & SSO</td>
-                  <td>—</td>
-                  <td class="featured-col">—</td>
-                  <td><span class="check">✓</span></td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
