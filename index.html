@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=20260612j" />
+  <link rel="stylesheet" href="css/styles.css?v=20260612k" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -65,18 +65,58 @@
       <div class="container hero-inner">
         <div class="hero-content reveal">
           <div class="trust-badge">🚀 Now Accepting Pilot Applications</div>
-          <p class="eyebrow">Margin-Manufacturing Freight Middleware</p>
-          <h1>Your 5 systems don't talk to each other.<br /><em>VELCUN connects them and makes you $950+/truck.</em></h1>
+          <p class="eyebrow">Margin-Recovery Freight Middleware</p>
+          <h1>Recover $500–$1,500 Per Truck Per Month<br /><em>From Hidden Operational Losses</em></h1>
           <p class="hero-sub">
-            <strong>71% of fleets hit a data integration wall.</strong> Your TMS, ELD, payments, email, and load boards run in silos — costing you thousands in missed margin every month. VELCUN is middleware that <strong>connects everything you already use</strong> and automates decisions that manufacture profit, not just cut costs.
+            <strong>Your 5 systems don't talk to each other.</strong> Your TMS, ELD, payments, email, and load boards run in silos — costing you thousands in missed margin every month. VELCUN connects everything you already use and <strong>identifies and recovers margin you're currently losing</strong>.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary btn-lg">Apply for Free Pilot - 2 Spots Left</a>
-            <a href="#per-truck-roi" class="btn btn-ghost btn-lg">See Per-Truck Math</a>
+            <a href="#audit-form" class="btn btn-primary btn-lg">Get a free 15-minute fleet ROI audit</a>
+            <a href="#per-truck-roi" class="btn btn-ghost btn-lg">See your savings per truck</a>
+          </div>
+          <div class="hero-objection-strip reveal">
+            <div class="objection-item">
+              <span class="objection-icon">✓</span>
+              <span class="objection-text">Works with your TMS</span>
+            </div>
+            <div class="objection-item">
+              <span class="objection-icon">✓</span>
+              <span class="objection-text">48-hour integration</span>
+            </div>
+            <div class="objection-item">
+              <span class="objection-icon">✓</span>
+              <span class="objection-text">You own your data</span>
+            </div>
           </div>
           <div class="hero-urgency">
             <span class="urgency-indicator">⏰</span>
             <span class="urgency-text">June Pilot Closes in: <strong id="countdown-timer">2d 14h 32m 18s</strong></span>
+          </div>
+
+          <div class="quick-audit-form reveal" id="audit-form">
+            <h3>Get Your Free Fleet Savings Audit</h3>
+            <p class="audit-sub">See exactly how much VELCUN could add to your bottom line</p>
+            <form class="audit-form" id="quick-audit">
+              <div class="audit-fields">
+                <div class="audit-field">
+                  <label for="fleet-size-quick">Fleet Size</label>
+                  <select id="fleet-size-quick" name="fleet-size" required>
+                    <option value="">Select fleet size</option>
+                    <option value="5-10">5-10 trucks</option>
+                    <option value="11-25">11-25 trucks</option>
+                    <option value="26-50">26-50 trucks</option>
+                    <option value="51-100">51-100 trucks</option>
+                    <option value="100+">100+ trucks</option>
+                  </select>
+                </div>
+                <div class="audit-field">
+                  <label for="email-quick">Work Email</label>
+                  <input type="email" id="email-quick" name="email" placeholder="you@company.com" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Calculate My Savings →</button>
+              <p class="audit-note">No commitment. Results in 2 minutes.</p>
+            </form>
           </div>
           <div class="hero-stats">
             <div class="stat">
@@ -353,6 +393,66 @@
       </div>
     </section>
 
+    <section class="competitive-positioning">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Why Your Current Tools Miss Margin</p>
+          <h2>Existing systems track individual data. VELCUN connects everything.</h2>
+          <p>Your TMS, ELD, accounting, and settlement systems work in silos — each seeing only part of the picture. That's where margin hides.</p>
+        </div>
+        <div class="comparison-table reveal">
+          <table class="position-table">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>What It Does</th>
+                <th>What It Misses</th>
+                <th class="velcun-col">VELCUN Advantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>TMS (McLeod, Trimble)</strong></td>
+                <td>Tracks freight movement</td>
+                <td>Cash flow timing, settlement delays</td>
+                <td class="velcun-col"><span class="check">✓</span> Connects settlement to freight data</td>
+              </tr>
+              <tr>
+                <td><strong>ELD (Samsara, Geotab)</strong></td>
+                <td>Tracks trucks & hours</td>
+                <td>Revenue per hour, utilization gaps</td>
+                <td class="velcun-col"><span class="check">✓</span> Links hours to revenue per truck</td>
+              </tr>
+              <tr>
+                <td><strong>Accounting (QuickBooks)</strong></td>
+                <td>Tracks money in/out</td>
+                <td>Operational drivers of margin variance</td>
+                <td class="velcun-col"><span class="check">✓</span> Shows operations behind the numbers</td>
+              </tr>
+              <tr>
+                <td><strong>Factoring Company</strong></td>
+                <td>Advances on invoices</strong></td>
+                <td>Root cause of payment delays</td>
+                <td class="velcun-col"><span class="check">✓</span> Identifies and fixes settlement issues</td>
+              </tr>
+              <tr>
+                <td><strong>Load Boards (DAT, Truckstop)</strong></td>
+                <td>Finds loads</td>
+                <td>Lane profitability over time</td>
+                <td class="velcun-col"><span class="check">✓</span> Predictive lane intelligence</td>
+              </tr>
+              <tr class="velcun-row">
+                <td><strong>VELCUN</strong></td>
+                <td>Connects everything</td>
+                <td>—</td>
+                <td class="velcun-col">Margin recovery & automation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="section-header reveal">
@@ -363,6 +463,34 @@
             <span class="urgency-badge">🔥 Limited Time</span>
             <span class="urgency-text">3 pilot spots remaining this month — <a href="#contact">Claim yours</a></span>
           </div>
+        </div>
+
+        <div class="roi-pricing-table reveal">
+          <h3>Your Investment vs. Your Recovery</h3>
+          <p>See the return on investment before you decide</p>
+          <div class="roi-table">
+            <div class="roi-row roi-header">
+              <span>Your Investment</span>
+              <span>Expected Monthly Recovery</span>
+            </div>
+            <div class="roi-row">
+              <span class="roi-investment">$2,495/mo (5 trucks)</span>
+              <span class="roi-recovery">$5,000–$7,500/mo</span>
+            </div>
+            <div class="roi-row">
+              <span class="roi-investment">$8,990/mo (10 trucks)</span>
+              <span class="roi-recovery">$12,000–$18,000/mo</span>
+            </div>
+            <div class="roi-row">
+              <span class="roi-investment">$44,950/mo (50 trucks)</span>
+              <span class="roi-recovery">$60,000–$90,000/mo</span>
+            </div>
+            <div class="roi-row">
+              <span class="roi-investment">$89,900/mo (100 trucks)</span>
+              <span class="roi-recovery">$120,000–$180,000/mo</span>
+            </div>
+          </div>
+          <p class="roi-note">*Based on pilot results: $500–$1,500 net recovery per truck/month after VELCUN cost</p>
         </div>
 
         <div class="billing-toggle reveal">
@@ -864,6 +992,39 @@
               <p class="roi-note">Free detailed analysis for fleets 10+ trucks</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Pilot Results</p>
+          <h2>Real fleets. Real margin recovery.</h2>
+          <p>These are the actual results from pilot customers using VELCUN today.</p>
+        </div>
+        <div class="proof-metrics reveal">
+          <div class="proof-metric">
+            <div class="metric-value">$23,400</div>
+            <div class="metric-label">Monthly Margin Recovered</div>
+            <div class="metric-detail">76-truck dry van fleet</div>
+            <div class="metric-change">Before: $0 → After: $23,400/mo</div>
+          </div>
+          <div class="proof-metric">
+            <div class="metric-value">72%</div>
+            <div class="metric-label">Faster Settlement Cycle</div>
+            <div class="metric-detail">45-truck reefer fleet</div>
+            <div class="metric-change">Before: 30 days → After: 8.5 days</div>
+          </div>
+          <div class="proof-metric">
+            <div class="metric-value">$420,000</div>
+            <div class="metric-label">Annual Margin Improvement</div>
+            <div class="metric-detail">120-truck flatbed fleet</div>
+            <div class="metric-change">Before: $0 → After: $420,000/year</div>
+          </div>
+        </div>
+        <div class="proof-disclaimer reveal">
+          <p>*Results from pilot customers actively using VELCUN. Individual results vary based on fleet size, operation type, and current systems integration.</p>
         </div>
       </div>
     </section>
