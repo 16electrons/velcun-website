@@ -302,6 +302,32 @@
     updatePerTruckScale();
   }
 
+  // Countdown Timer for Pilot Deadline
+  function updateCountdown() {
+    const countdownElement = document.getElementById('countdown-timer');
+    if (!countdownElement) return;
+
+    // Set deadline to end of current month (June 30, 2026)
+    const deadline = new Date('2026-06-30T23:59:59').getTime();
+    const now = new Date().getTime();
+    const distance = deadline - now;
+
+    if (distance > 0) {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      countdownElement.textContent = 'Pilot Closed';
+    }
+  }
+
+  // Update countdown every second
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
   // Enhanced ROI Calculator
   const roiCalculator = {
     fleetSize: document.getElementById('roi-fleet-size'),
