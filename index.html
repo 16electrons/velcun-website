@@ -30,6 +30,7 @@
       <ul class="nav-links">
         <li><a href="#platform">Platform</a></li>
         <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#demo">Demo</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#contact" class="btn btn-sm">Book a Demo</a></li>
@@ -429,6 +430,143 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo" id="demo">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Interactive Demo</p>
+          <h2>See VELCUN in action</h2>
+          <p>Try our AI dispatch simulator — match loads to trucks in real-time.</p>
+        </div>
+        <div class="demo-container reveal">
+          <div class="demo-panel">
+            <div class="demo-header">
+              <h3>Available Loads</h3>
+              <p class="demo-sub">Select a load to see AI recommendations</p>
+            </div>
+            <div class="demo-loads" id="demo-loads">
+              <div class="demo-load active" data-load="1">
+                <div class="load-info">
+                  <span class="load-id">LD-4821</span>
+                  <span class="load-route">Chicago, IL → Dallas, TX</span>
+                  <span class="load-rate">$2,400</span>
+                </div>
+                <div class="load-details">
+                  <span>53' Dry Van</span>
+                  <span>1,200 mi</span>
+                  <span>Pickup: Today 2PM</span>
+                </div>
+              </div>
+              <div class="demo-load" data-load="2">
+                <div class="load-info">
+                  <span class="load-id">LD-4822</span>
+                  <span class="load-route">Atlanta, GA → Miami, FL</span>
+                  <span class="load-rate">$1,800</span>
+                </div>
+                <div class="load-details">
+                  <span>53' Reefer</span>
+                  <span>660 mi</span>
+                  <span>Pickup: Tomorrow 8AM</span>
+                </div>
+              </div>
+              <div class="demo-load" data-load="3">
+                <div class="load-info">
+                  <span class="load-id">LD-4823</span>
+                  <span class="load-route">Phoenix, AZ → Denver, CO</span>
+                  <span class="load-rate">$2,100</span>
+                </div>
+                <div class="load-details">
+                  <span>53' Flatbed</span>
+                  <span>600 mi</span>
+                  <span>Pickup: Today 6PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-panel demo-panel-right">
+            <div class="demo-header">
+              <h3>AI Truck Recommendations</h3>
+              <p class="demo-sub">Ranked by profitability and fit</p>
+            </div>
+            <div class="demo-trucks" id="demo-trucks">
+              <div class="demo-truck demo-truck-best">
+                <div class="truck-badge">Best Match</div>
+                <div class="truck-info">
+                  <span class="truck-id">Truck #14</span>
+                  <span class="truck-driver">Driver: Mike R.</span>
+                </div>
+                <div class="truck-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Deadhead</span>
+                    <span class="metric-value good">45 mi</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">HOS</span>
+                    <span class="metric-value good">8.5 hrs</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Profit</span>
+                    <span class="metric-value excellent">$1,850</span>
+                  </div>
+                </div>
+                <div class="truck-score">
+                  <span class="score-label">AI Score</span>
+                  <span class="score-value">94%</span>
+                </div>
+              </div>
+              <div class="demo-truck">
+                <div class="truck-info">
+                  <span class="truck-id">Truck #07</span>
+                  <span class="truck-driver">Driver: Sarah K.</span>
+                </div>
+                <div class="truck-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Deadhead</span>
+                    <span class="metric-value">120 mi</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">HOS</span>
+                    <span class="metric-value good">7.2 hrs</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Profit</span>
+                    <span class="metric-value">$1,720</span>
+                  </div>
+                </div>
+                <div class="truck-score">
+                  <span class="score-label">AI Score</span>
+                  <span class="score-value">87%</span>
+                </div>
+              </div>
+              <div class="demo-truck">
+                <div class="truck-info">
+                  <span class="truck-id">Truck #23</span>
+                  <span class="truck-driver">Driver: James T.</span>
+                </div>
+                <div class="truck-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Deadhead</span>
+                    <span class="metric-value warning">180 mi</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">HOS</span>
+                    <span class="metric-value warning">5.8 hrs</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Profit</span>
+                    <span class="metric-value">$1,580</span>
+                  </div>
+                </div>
+                <div class="truck-score">
+                  <span class="score-label">AI Score</span>
+                  <span class="score-value">72%</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
