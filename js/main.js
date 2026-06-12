@@ -1,4 +1,7 @@
 (function () {
+  // Add js-enabled class to body when JavaScript loads
+  document.body.classList.add('js-enabled');
+
   const header = document.getElementById("header");
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");

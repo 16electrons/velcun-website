@@ -6,16 +6,16 @@
   --bg-card: #151d2e;
   --border: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.2);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
   --accent: #f59e0b;
   --accent-hover: #fbbf24;
   --accent-glow: rgba(245, 158, 11, 0.3);
   --success: #22c55e;
   --pending: #eab308;
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "DM Sans", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --radius: 12px;
   --radius-lg: 20px;
   --container: 1140px;
@@ -360,12 +360,23 @@ h3 {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide initially, then animate when JavaScript loads */
+.js-enabled .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.js-enabled .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
