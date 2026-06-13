@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics & Reports - VELCUN</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613r" />
+  <link rel="stylesheet" href="/portal/portal.css?v=20260613r" />
+  <link rel="stylesheet" href="/analytics/analytics.css?v=20260613r" />
+</head>
+<body class="analytics-body">
+  <!-- Analytics Header -->
+  <header class="analytics-header">
+    <div class="analytics-header-inner">
+      <div class="analytics-logo">
+        <a href="/portal">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+            <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="analytics-title">
+        <h1>Analytics & Reports</h1>
+        <p>Comprehensive business intelligence for your fleet operations</p>
+      </div>
+      
+      <div class="analytics-controls">
+        <select id="timeRange" class="time-range-selector">
+          <option value="7d">Last 7 days</option>
+          <option value="30d" selected>Last 30 days</option>
+          <option value="90d">Last 90 days</option>
+          <option value="1y">Last year</option>
+        </select>
+        <button class="btn btn-secondary" onclick="exportReport()">
+          <span>Export Report</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Analytics Main -->
+  <main class="analytics-main">
+    <!-- KPI Overview -->
+    <section class="kpi-section">
+      <div class="kpi-grid">
+        <div class="kpi-card revenue">
+          <div class="kpi-icon">💰</div>
+          <div class="kpi-content">
+            <div class="kpi-label">Total Revenue</div>
+            <div class="kpi-value">$284,500</div>
+            <div class="kpi-change positive">+12.5%</div>
+          </div>
+        </div>
+        
+        <div class="kpi-card cost">
+          <div class="kpi-icon">📉</div>
+          <div class="kpi-content">
+            <div class="kpi-label">Total Costs</div>
+            <div class="kpi-value">$198,200</div>
+            <div class="kpi-change negative">-8.2%</div>
+          </div>
+        </div>
+        
+        <div class="kpi-card margin">
+          <div class="kpi-icon">📊</div>
+          <div class="kpi-content">
+            <div class="kpi-label">Net Margin</div>
+            <div class="kpi-value">$86,300</div>
+            <div class="kpi-change positive">+23.1%</div>
+          </div>
+        </div>
+        
+        <div class="kpi-card efficiency">
+          <div class="kpi-icon">⚡</div>
+          <div class="kpi-content">
+            <div class="kpi-label">Efficiency Score</div>
+            <div class="kpi-value">87.4%</div>
+            <div class="kpi-change positive">+5.8%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+      <div class="charts-grid">
+        <!-- Revenue Trend -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Revenue Trend</h3>
+            <div class="chart-controls">
+              <button class="chart-btn active">Monthly</button>
+              <button class="chart-btn">Weekly</button>
+            </div>
+          </div>
+          <div class="chart-placeholder revenue-chart">
+            <div class="chart-mockup">
+              <div class="chart-bars">
+                <div class="chart-bar" style="height: 60%"></div>
+                <div class="chart-bar" style="height: 75%"></div>
+                <div class="chart-bar" style="height: 68%"></div>
+                <div class="chart-bar" style="height: 82%"></div>
+                <div class="chart-bar" style="height: 90%"></div>
+                <div class="chart-bar" style="height: 85%"></div>
+                <div class="chart-bar" style="height: 95%"></div>
+              </div>
+              <div class="chart-labels">
+                <span>Oct</span>
+                <span>Nov</span>
+                <span>Dec</span>
+                <span>Jan</span>
+                <span>Feb</span>
+                <span>Mar</span>
+                <span>Apr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer Utilization -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Automation Layer Utilization</h3>
+            <div class="chart-controls">
+              <button class="chart-btn active">This Month</button>
+              <button class="chart-btn">Last Month</button>
+            </div>
+          </div>
+          <div class="chart-placeholder utilization-chart">
+            <div class="utilization-items">
+              <div class="utilization-item">
+                <div class="utilization-label">Settlement</div>
+                <div class="utilization-bar">
+                  <div class="utilization-fill" style="width: 92%"></div>
+                </div>
+                <div class="utilization-value">92%</div>
+              </div>
+              <div class="utilization-item">
+                <div class="utilization-label">Lane IQ</div>
+                <div class="utilization-bar">
+                  <div class="utilization-fill" style="width: 78%"></div>
+                </div>
+                <div class="utilization-value">78%</div>
+              </div>
+              <div class="utilization-item">
+                <div class="utilization-label">Parse</div>
+                <div class="utilization-bar">
+                  <div class="utilization-fill" style="width: 85%"></div>
+                </div>
+                <div class="utilization-value">85%</div>
+              </div>
+              <div class="utilization-item">
+                <div class="utilization-label">Driver Yield</div>
+                <div class="utilization-bar">
+                  <div class="utilization-fill" style="width: 71%"></div>
+                </div>
+                <div class="utilization-value">71%</div>
+              </div>
+              <div class="utilization-item">
+                <div class="utilization-label">Border</div>
+                <div class="utilization-bar">
+                  <div class="utilization-fill" style="width: 65%"></div>
+                </div>
+                <div class="utilization-value">65%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Performance Metrics</h3>
+          </div>
+          <div class="chart-placeholder performance-chart">
+            <div class="performance-grid">
+              <div class="performance-metric">
+                <div class="metric-icon">🎯</div>
+                <div class="metric-content">
+                  <div class="metric-label">Settlement Automation</div>
+                  <div class="metric-value">94%</div>
+                  <div class="metric-change positive">+12%</div>
+                </div>
+              </div>
+              <div class="performance-metric">
+                <div class="metric-icon">🛤️</div>
+                <div class="metric-content">
+                  <div class="metric-label">Lane Efficiency</div>
+                  <div class="metric-value">23%</div>
+                  <div class="metric-change positive">+8%</div>
+                </div>
+              </div>
+              <div class="performance-metric">
+                <div class="metric-icon">📄</div>
+                <div class="metric-content">
+                  <div class="metric-label">Document Accuracy</div>
+                  <div class="metric-value">92%</div>
+                  <div class="metric-change positive">+5%</div>
+                </div>
+              </div>
+              <div class="performance-metric">
+                <div class="metric-icon">🚛</div>
+                <div class="metric-content">
+                  <div class="metric-label">Driver Retention</div>
+                  <div class="metric-value">94.2%</div>
+                  <div class="metric-change positive">+3%</div>
+                </div>
+              </div>
+              <div class="performance-metric">
+                <div class="metric-icon">🌍</div>
+                <div class="metric-content">
+                  <div class="metric-label">Border Approval</div>
+                  <div class="metric-value">89%</div>
+                  <div class="metric-change positive">+7%</div>
+                </div>
+              </div>
+              <div class="performance-metric">
+                <div class="metric-icon">⏱️</div>
+                <div class="metric-content">
+                  <div class="metric-label">Processing Time</div>
+                  <div class="metric-value">-45%</div>
+                  <div class="metric-change positive">-12%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROI Analysis -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>ROI Analysis</h3>
+          </div>
+          <div class="chart-placeholder roi-chart">
+            <div class="roi-summary">
+              <div class="roi-metric">
+                <div class="roi-label">Total Investment</div>
+                <div class="roi-value">$12,000/mo</div>
+              </div>
+              <div class="roi-arrow">→</div>
+              <div class="roi-metric">
+                <div class="roi-label">Value Generated</div>
+                <div class="roi-value">$45,200/mo</div>
+              </div>
+              <div class="roi-arrow">→</div>
+              <div class="roi-metric roi-highlight">
+                <div class="roi-label">Net ROI</div>
+                <div class="roi-value">$33,200/mo</div>
+                <div class="roi-percent">277%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Reports Section -->
+    <section class="reports-section">
+      <div class="section-header">
+        <h2>Detailed Reports</h2>
+        <div class="report-controls">
+          <input type="text" class="report-search" placeholder="Search reports..." />
+          <button class="btn btn-primary" onclick="generateCustomReport()">Generate Custom Report</button>
+        </div>
+      </div>
+
+      <div class="reports-grid">
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">💰</div>
+            <div class="report-title">Monthly Settlement Report</div>
+          </div>
+          <div class="report-description">
+            Complete breakdown of all settlements, payment processing, and financial performance.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 20, 2024</span>
+            <span class="report-size">2.4 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('settlement')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('settlement')">Download</button>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">🛤️</div>
+            <div class="report-title">Lane Intelligence Report</div>
+          </div>
+          <div class="report-description">
+            Detailed analysis of lane profitability, demand forecasting, and optimization recommendations.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 19, 2024</span>
+            <span class="report-size">1.8 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('lanes')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('lanes')">Download</button>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">🚛</div>
+            <div class="report-title">Driver Performance Report</div>
+          </div>
+          <div class="report-description">
+            Comprehensive driver analytics including retention scores, performance metrics, and risk factors.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 18, 2024</span>
+            <span class="report-size">3.2 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('drivers')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('drivers')">Download</button>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">🌍</div>
+            <div class="report-title">Border Compliance Report</div>
+          </div>
+          <div class="report-description">
+            Cross-border shipment analysis, compliance status, and documentation requirements.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 17, 2024</span>
+            <span class="report-size">1.5 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('border')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('border')">Download</button>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">📊</div>
+            <div class="report-title">Business Intelligence Report</div>
+          </div>
+          <div class="report-description">
+            Executive summary with KPIs, trends, and actionable insights across all operations.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 20, 2024</span>
+            <span class="report-size">4.1 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('bi')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('bi')">Download</button>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-icon">⚡</div>
+            <div class="report-title">Efficiency Analysis</div>
+          </div>
+          <div class="report-description">
+            Operational efficiency metrics including time savings, automation rates, and process improvements.
+          </div>
+          <div class="report-meta">
+            <span class="report-date">Generated: Jan 20, 2024</span>
+            <span class="report-size">2.7 MB</span>
+          </div>
+          <div class="report-actions">
+            <button class="btn btn-secondary" onclick="viewReport('efficiency')">View</button>
+            <button class="btn btn-primary" onclick="downloadReport('efficiency')">Download</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Report Generator -->
+    <section class="custom-report-section">
+      <h2>Generate Custom Report</h2>
+      <div class="custom-report-form">
+        <form onsubmit="handleCustomReport(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Report Name</label>
+              <input type="text" placeholder="My Custom Report" required />
+            </div>
+            <div class="form-group">
+              <label>Report Type</label>
+              <select required>
+                <option value="">Select type</option>
+                <option value="summary">Executive Summary</option>
+                <option value="detailed">Detailed Analysis</option>
+                <option value="comparative">Comparative Analysis</option>
+                <option value="forecasting">Forecasting Report</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Date Range</label>
+              <select required>
+                <option value="7d">Last 7 days</option>
+                <option value="30d">Last 30 days</option>
+                <option value="90d">Last 90 days</option>
+                <option value="1y">Last year</option>
+                <option value="custom">Custom range</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Layers to Include</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Settlement</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Lane IQ</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Parse</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Driver Yield</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Border</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Metrics</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Revenue & Costs</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Efficiency Metrics</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked />
+                  <span>Performance Scores</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" />
+                  <span>Comparisons</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" />
+                  <span>Recommendations</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Output Format</label>
+              <select required>
+                <option value="pdf">PDF</option>
+                <option value="excel">Excel</option>
+                <option value="csv">CSV</option>
+                <option value="json">JSON</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Generate Report</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/analytics/analytics.js?v=20260613r"></script>
+</body>
+</html>

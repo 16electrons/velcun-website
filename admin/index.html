@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELCUN Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613a" />
+  <link rel="stylesheet" href="/admin/admin.css?v=20260613a" />
+</head>
+<body class="admin-body">
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+          <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>VELCUN Admin</span>
+      </div>
+      
+      <nav class="admin-nav">
+        <a href="#overview" class="admin-nav-item active" data-section="overview">Overview</a>
+        <a href="#users" class="admin-nav-item" data-section="users">Users</a>
+        <a href="#fleets" class="admin-nav-item" data-section="fleets">Fleets</a>
+        <a href="#system" class="admin-nav-item" data-section="system">System Health</a>
+        <a href="#logs" class="admin-nav-item" data-section="logs">Logs</a>
+        <a href="#settings" class="admin-nav-item" data-section="settings">Settings</a>
+      </nav>
+      
+      <div class="admin-user">
+        <span class="admin-badge">Admin</span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main Content -->
+  <main class="admin-main">
+    <!-- Overview Section -->
+    <section id="overview" class="admin-section active">
+      <h1>Admin Dashboard Overview</h1>
+      
+      <!-- System Stats -->
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <div class="stat-title">Total Users</div>
+          <div class="stat-number">247</div>
+          <div class="stat-change positive">+12 this week</div>
+        </div>
+        
+        <div class="admin-stat-card">
+          <div class="stat-title">Active Fleets</div>
+          <div class="stat-number">38</div>
+          <div class="stat-change positive">+3 this month</div>
+        </div>
+        
+        <div class="admin-stat-card">
+          <div class="stat-title">API Calls Today</div>
+          <div class="stat-number">12,457</div>
+          <div class="stat-change positive">+8% vs yesterday</div>
+        </div>
+        
+        <div class="admin-stat-card">
+          <div class="stat-title">System Health</div>
+          <div class="stat-number healthy">Healthy</div>
+          <div class="stat-change positive">All systems operational</div>
+        </div>
+      </div>
+
+      <!-- Layer Activity -->
+      <div class="layer-activity">
+        <h2>Automation Layer Activity</h2>
+        <div class="activity-grid">
+          <div class="activity-card settlement">
+            <div class="activity-header">
+              <span class="activity-icon">💰</span>
+              <span class="activity-name">Settlements</span>
+            </div>
+            <div class="activity-metrics">
+              <div class="activity-metric">
+                <span class="metric-label">Today</span>
+                <span class="metric-value">1,247</span>
+              </div>
+              <div class="activity-metric">
+                <span class="metric-label">Success Rate</span>
+                <span class="metric-value">94%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="activity-card lanes">
+            <div class="activity-header">
+              <span class="activity-icon">🛤️</span>
+              <span class="activity-name">Lane IQ</span>
+            </div>
+            <div class="activity-metrics">
+              <div class="activity-metric">
+                <span class="metric-label">Today</span>
+                <span class="metric-value">856</span>
+              </div>
+              <div class="activity-metric">
+                <span class="metric-label">Efficiency</span>
+                <span class="metric-value">+24%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="activity-card parse">
+            <div class="activity-header">
+              <span class="activity-icon">📄</span>
+              <span class="activity-name">Parse</span>
+            </div>
+            <div class="activity-metrics">
+              <div class="activity-metric">
+                <span class="metric-label">Today</span>
+                <span class="metric-value">2,134</span>
+              </div>
+              <div class="activity-metric">
+                <span class="metric-label">Accuracy</span>
+                <span class="metric-value">92%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="activity-card drivers">
+            <div class="activity-header">
+              <span class="activity-icon">🚛</span>
+              <span class="activity-name">Driver Yield</span>
+            </div>
+            <div class="activity-metrics">
+              <div class="activity-metric">
+                <span class="metric-label">Active</span>
+                <span class="metric-value">1,847</span>
+              </div>
+              <div class="activity-metric">
+                <span class="metric-label">Retention</span>
+                <span class="metric-value">94%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="activity-card border">
+            <div class="activity-header">
+              <span class="activity-icon">🌍</span>
+              <span class="activity-name">Border</span>
+            </div>
+            <div class="activity-metrics">
+              <div class="activity-metric">
+                <span class="metric-label">Today</span>
+                <span class="metric-value">234</span>
+              </div>
+              <div class="activity-metric">
+                <span class="metric-label">Approval</span>
+                <span class="metric-value">89%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Users Section -->
+    <section id="users" class="admin-section">
+      <div class="section-header">
+        <h1>User Management</h1>
+        <button class="btn btn-primary" onclick="addUser()">Add User</button>
+      </div>
+
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>USR-001</td>
+              <td>John Doe</td>
+              <td>john@acmetrucking.com</td>
+              <td>Acme Trucking</td>
+              <td><span class="role-badge role-admin">Admin</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>2024-01-15</td>
+              <td><button class="action-btn">Edit</button></td>
+            </tr>
+            <tr>
+              <td>USR-002</td>
+              <td>Jane Johnson</td>
+              <td>jane@globallogistics.com</td>
+              <td>Global Logistics</td>
+              <td><span class="role-badge role-user">User</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>2024-01-16</td>
+              <td><button class="action-btn">Edit</button></td>
+            </tr>
+            <tr>
+              <td>USR-003</td>
+              <td>Mike Smith</td>
+              <td>mike@freightmasters.com</td>
+              <td>Freight Masters</td>
+              <td><span class="role-badge role-user">User</span></td>
+              <td><span class="status-badge status-inactive">Inactive</span></td>
+              <td>2024-01-17</td>
+              <td><button class="action-btn">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Fleets Section -->
+    <section id="fleets" class="admin-section">
+      <div class="section-header">
+        <h1>Fleet Management</h1>
+        <button class="btn btn-primary" onclick="addFleet()">Add Fleet</button>
+      </div>
+
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Fleet ID</th>
+              <th>Company</th>
+              <th>Fleet Size</th>
+              <th>Plan</th>
+              <th>Status</th>
+              <th>Active Since</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FLEET-001</td>
+              <td>Acme Trucking</td>
+              <td>25</td>
+              <td>Ecosystem</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>2024-01-15</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>FLEET-002</td>
+              <td>Global Logistics</td>
+              <td>150</td>
+              <td>Enterprise</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>2024-01-10</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>FLEET-003</td>
+              <td>Swift Transport</td>
+              <td>50</td>
+              <td>Ecosystem</td>
+              <td><span class="status-badge status-pending">Pending</span></td>
+              <td>2024-01-18</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- System Health Section -->
+    <section id="system" class="admin-section">
+      <h1>System Health</h1>
+      
+      <div class="health-grid">
+        <div class="health-card">
+          <div class="health-header">
+            <span class="health-icon">🗄️</span>
+            <span class="health-title">Database</span>
+          </div>
+          <div class="health-metrics">
+            <div class="health-metric">
+              <span class="metric-label">Status</span>
+              <span class="metric-value healthy">Healthy</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Response Time</span>
+              <span class="metric-value">45ms</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Connections</span>
+              <span class="metric-value">12/15</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="health-card">
+          <div class="health-header">
+            <span class="health-icon">🌐</span>
+            <span class="health-title">API</span>
+          </div>
+          <div class="health-metrics">
+            <div class="health-metric">
+              <span class="metric-label">Status</span>
+              <span class="metric-value healthy">Healthy</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Success Rate</span>
+              <span class="metric-value">98.5%</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Avg Response</span>
+              <span class="metric-value">120ms</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="health-card">
+          <div class="health-header">
+            <span class="health-icon">💾</span>
+            <span class="health-title">Storage</span>
+          </div>
+          <div class="health-metrics">
+            <div class="health-metric">
+              <span class="metric-label">Status</span>
+              <span class="metric-value healthy">Healthy</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Used</span>
+              <span class="metric-value">45%</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Files</span>
+              <span class="metric-value">12,457</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="health-card">
+          <div class="health-header">
+            <span class="health-icon">🔌</span>
+            <span class="health-title">Authentication</span>
+          </div>
+          <div class="health-metrics">
+            <div class="health-metric">
+              <span class="metric-label">Status</span>
+              <span class="metric-value healthy">Healthy</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Active Sessions</span>
+              <span class="metric-value">45</span>
+            </div>
+            <div class="health-metric">
+              <span class="metric-label">Rate Limit</span>
+              <span class="metric-value">12%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logs Section -->
+    <section id="logs" class="admin-section">
+      <div class="section-header">
+        <h1>System Logs</h1>
+        <div class="filter-controls">
+          <select class="admin-filter">
+            <option value="all">All Logs</option>
+            <option value="errors">Errors</option>
+            <option value="warnings">Warnings</option>
+            <option value="info">Info</option>
+          </select>
+          <input type="text" class="admin-search" placeholder="Search logs..." />
+        </div>
+      </div>
+
+      <div class="logs-container">
+        <div class="log-entry log-error">
+          <span class="log-time">2024-01-20 14:32:45</span>
+          <span class="log-level">ERROR</span>
+          <span class="log-message">Database connection timeout in settlement processing</span>
+        </div>
+        <div class="log-entry log-warning">
+          <span class="log-time">2024-01-20 14:30:12</span>
+          <span class="log-level">WARNING</span>
+          <span class="log-message">High error rate detected in lane optimization (15%)</span>
+        </div>
+        <div class="log-entry log-info">
+          <span class="log-time">2024-01-20 14:28:34</span>
+          <span class="log-level">INFO</span>
+          <span class="log-message">User john@acmetrucking.com logged in successfully</span>
+        </div>
+        <div class="log-entry log-info">
+          <span class="log-time">2024-01-20 14:25:18</span>
+          <span class="log-level">INFO</span>
+          <span class="log-message">Settlement #1247 completed successfully</span>
+        </div>
+        <div class="log-entry log-info">
+          <span class="log-time">2024-01-20 14:22:05</span>
+          <span class="log-level">INFO</span>
+          <span class="log-message">Webhook delivery successful for settlement.paid event</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings" class="admin-section">
+      <h1>System Settings</h1>
+      
+      <div class="settings-grid">
+        <div class="settings-panel">
+          <h2>General Settings</h2>
+          <form class="settings-form" onsubmit="saveGeneralSettings(event)">
+            <div class="form-group">
+              <label>System Name</label>
+              <input type="text" value="VELCUN Production" />
+            </div>
+            <div class="form-group">
+              <label>Support Email</label>
+              <input type="email" value="support@velcun.com" />
+            </div>
+            <div class="form-group">
+              <label>Default Timezone</label>
+              <select>
+                <option value="EST">Eastern Time</option>
+                <option value="CST">Central Time</option>
+                <option value="MST">Mountain Time</option>
+                <option value="PST">Pacific Time</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="settings-panel">
+          <h2>API Settings</h2>
+          <form class="settings-form" onsubmit="saveAPISettings(event)">
+            <div class="form-group">
+              <label>Rate Limit (requests/min)</label>
+              <input type="number" value="100" />
+            </div>
+            <div class="form-group">
+              <label>JWT Expiration (hours)</label>
+              <input type="number" value="24" />
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Enable API access logging</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Enable webhook notifications</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="settings-panel">
+          <h2>Security Settings</h2>
+          <form class="settings-form" onsubmit="saveSecuritySettings(event)">
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Require 2FA for admin accounts</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Enable IP whitelist for admin access</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Session Timeout (minutes)</label>
+              <input type="number" value="30" />
+            </div>
+            <div class="form-group">
+              <label>Max Login Attempts</label>
+              <input type="number" value="5" />
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/admin/admin.js?v=20260613a"></script>
+</body>
+</html>

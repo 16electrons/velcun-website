@@ -1,0 +1,414 @@
+/* API Documentation Styles */
+.docs-body {
+  background: #0f141f;
+  color: #ffffff;
+  font-family: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Docs Header */
+.docs-header {
+  background: #1a2032;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.docs-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.docs-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.docs-logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.docs-nav {
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+  overflow-x: auto;
+  margin-left: 2rem;
+}
+
+.docs-nav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.docs-nav::-webkit-scrollbar-track {
+  background: #0f141f;
+  border-radius: 2px;
+}
+
+.docs-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.docs-nav-item {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.docs-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.docs-nav-item.active {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+/* Docs Main */
+.docs-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 64px);
+}
+
+/* Docs Sections */
+.docs-section {
+  display: none;
+}
+
+.docs-section.active {
+  display: block;
+}
+
+.docs-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.docs-intro {
+  font-size: 1.125rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.docs-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Docs Features */
+.docs-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.docs-feature {
+  background: #1a2032;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.feature-desc {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Code Blocks */
+.code-block {
+  background: #0f141f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.code-header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+/* Quick Start */
+.quick-start {
+  margin-bottom: 2rem;
+}
+
+.api-base-url {
+  margin-bottom: 2rem;
+}
+
+.rate-limits {
+  margin-bottom: 2rem;
+}
+
+/* Docs Table */
+.docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a2032;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.docs-table thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.docs-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.docs-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+}
+
+.docs-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Endpoint Cards */
+.endpoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.endpoint-card {
+  background: #1a2032;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.endpoint-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.endpoint-method {
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.endpoint-method:nth-child(1) {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.endpoint-method:nth-child(2) {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.endpoint-method:nth-child(3) {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.endpoint-path {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  flex: 1;
+}
+
+.endpoint-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.endpoint-badge.public {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.endpoint-badge.protected {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.endpoint-desc {
+  padding: 1rem 1.25rem;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.endpoint-request,
+.endpoint-response,
+.endpoint-params {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.endpoint-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+/* Supported TMS */
+.supported-tms {
+  margin-top: 2rem;
+}
+
+.tms-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tms-item {
+  background: #1a2032;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tms-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.tms-code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding: 0.25rem 0.5rem;
+  background: #0f141f;
+  border-radius: 4px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .docs-header-inner {
+    padding: 0 1rem;
+  }
+
+  .docs-nav {
+    display: none;
+  }
+
+  .docs-main {
+    padding: 1rem;
+  }
+
+  .docs-features {
+    grid-template-columns: 1fr;
+  }
+
+  .endpoint-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tms-list {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .docs-intro {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-header-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem 1rem;
+  }
+
+  .docs-logo {
+    width: 100%;
+  }
+
+  .docs-main {
+    padding: 0.75rem;
+  }
+
+  .code-block {
+    margin: 0.75rem 0;
+  }
+
+  .endpoint-card {
+    margin: 0.75rem 0;
+  }
+}

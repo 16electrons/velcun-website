@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELCUN Customer Portal</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613p" />
+  <link rel="stylesheet" href="/portal/portal.css?v=20260613p" />
+</head>
+<body class="portal-body">
+  <!-- Portal Header -->
+  <header class="portal-header">
+    <div class="portal-header-inner">
+      <div class="portal-logo">
+        <a href="/">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+            <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>VELCUN</span>
+        </a>
+      </div>
+      
+      <nav class="portal-nav">
+        <a href="#dashboard" class="portal-nav-item active" data-section="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#settlements" class="portal-nav-item" data-section="settlements">
+          <span class="nav-icon">💰</span>
+          <span class="nav-label">Settlements</span>
+        </a>
+        <a href="#lanes" class="portal-nav-item" data-section="lanes">
+          <span class="nav-icon">🛤️</span>
+          <span class="nav-label">Lane IQ</span>
+        </a>
+        <a href="#documents" class="portal-nav-item" data-section="documents">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">Documents</span>
+        </a>
+        <a href="#drivers" class="portal-nav-item" data-section="drivers">
+          <span class="nav-icon">🚛</span>
+          <span class="nav-label">Drivers</span>
+        </a>
+        <a href="#border" class="portal-nav-item" data-section="border">
+          <span class="nav-icon">🌍</span>
+          <span class="nav-label">Border</span>
+        </a>
+        <a href="#analytics" class="portal-nav-item" data-section="analytics">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">Analytics</span>
+        </a>
+        <a href="#settings" class="portal-nav-item" data-section="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+      
+      <div class="portal-user">
+        <div class="user-profile">
+          <div class="user-avatar">JD</div>
+          <div class="user-info">
+            <div class="user-name">John Doe</div>
+            <div class="user-company">Acme Trucking</div>
+          </div>
+        </div>
+        <button class="logout-btn" onclick="logout()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portal Main Content -->
+  <main class="portal-main">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="portal-section active">
+      <div class="section-header">
+        <h1>Dashboard</h1>
+        <div class="section-actions">
+          <button class="btn btn-primary" onclick="refreshDashboard()">Refresh</button>
+          <select id="dateRange" class="form-select">
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+            <option value="90d">Last 90 days</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dashboard Overview Cards -->
+      <div class="dashboard-cards">
+        <div class="dashboard-card">
+          <div class="card-icon">💰</div>
+          <div class="card-content">
+            <div class="card-label">Total Revenue</div>
+            <div class="card-value">$284,500</div>
+            <div class="card-trend positive">+12.5% this month</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">🛤️</div>
+          <div class="card-content">
+            <div class="card-label">Active Lanes</div>
+            <div class="card-value">127</div>
+            <div class="card-trend positive">+8 new this week</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">📄</div>
+          <div class="card-content">
+            <div class="card-label">Documents Parsed</div>
+            <div class="card-value">1,247</div>
+            <div class="card-trend positive">95% success rate</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card">
+          <div class="card-icon">🚛</div>
+          <div class="card-content">
+            <div class="card-label">Driver Retention</div>
+            <div class="card-value">94.2%</div>
+            <div class="card-trend positive">Above industry avg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer Status Overview -->
+      <div class="layer-status">
+        <h2>Automation Layer Status</h2>
+        <div class="layer-grid">
+          <div class="layer-card settlement-card">
+            <div class="layer-header">
+              <div class="layer-icon">💰</div>
+              <div class="layer-name">Settlement</div>
+              <div class="layer-status active">Active</div>
+            </div>
+            <div class="layer-metrics">
+              <div class="metric">
+                <span class="metric-label">Processed Today</span>
+                <span class="metric-value">23</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Automation Rate</span>
+                <span class="metric-value">92%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="layer-card lane-card">
+            <div class="layer-header">
+              <div class="layer-icon">🛤️</div>
+              <div class="layer-name">Lane IQ</div>
+              <div class="layer-status active">Active</div>
+            </div>
+            <div class="layer-metrics">
+              <div class="metric">
+                <span class="metric-label">Optimized Today</span>
+                <span class="metric-value">18</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Efficiency Gain</span>
+                <span class="metric-value">+24%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="layer-card parse-card">
+            <div class="layer-header">
+              <div class="layer-icon">📄</div>
+              <div class="layer-name">Parse</div>
+              <div class="layer-status active">Active</div>
+            </div>
+            <div class="layer-metrics">
+              <div class="metric">
+                <span class="metric-label">Parsed Today</span>
+                <span class="metric-value">156</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Accuracy</span>
+                <span class="metric-value">94%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="layer-card driver-card">
+            <div class="layer-header">
+              <div class="layer-icon">🚛</div>
+              <div class="layer-name">Driver Yield</div>
+              <div class="layer-status active">Active</div>
+            </div>
+            <div class="layer-metrics">
+              <div class="metric">
+                <span class="metric-label">High Risk Drivers</span>
+                <span class="metric-value">3</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Avg Score</span>
+                <span class="metric-value">87</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="layer-card border-card">
+            <div class="layer-header">
+              <div class="layer-icon">🌍</div>
+              <div class="layer-name">Border</div>
+              <div class="layer-status active">Active</div>
+            </div>
+            <div class="layer-metrics">
+              <div class="metric">
+                <span class="metric-label">Pending Shipments</span>
+                <span class="metric-value">7</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Approval Rate</span>
+                <span class="metric-value">89%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon">💰</div>
+            <div class="activity-content">
+              <div class="activity-title">Settlement #1247 completed</div>
+              <div class="activity-description">Invoice INV-2024-1247 processed and paid</div>
+            </div>
+            <div class="activity-time">2 minutes ago</div>
+          </div>
+          
+          <div class="activity-item">
+            <div class="activity-icon">🛤️</div>
+            <div class="activity-content">
+              <div class="activity-title">Lane optimization completed</div>
+              <div class="activity-description">Dallas → Chicago lane optimized with 23% efficiency gain</div>
+            </div>
+            <div class="activity-time">15 minutes ago</div>
+          </div>
+          
+          <div class="activity-item">
+            <div class="activity-icon">📄</div>
+            <div class="activity-content">
+              <div class="activity-title">Document parsed successfully</div>
+              <div class="activity-description">BOL #8472 extracted with 96% confidence</div>
+            </div>
+            <div class="activity-time">32 minutes ago</div>
+          </div>
+          
+          <div class="activity-item">
+            <div class="activity-icon">🚛</div>
+            <div class="activity-content">
+              <div class="activity-title">Driver retention alert</div>
+              <div class="activity-description">Driver #452 showing increased turnover risk</div>
+            </div>
+            <div class="activity-time">1 hour ago</div>
+          </div>
+          
+          <div class="activity-item">
+            <div class="activity-icon">🌍</div>
+            <div class="activity-content">
+              <div class="activity-title">Border compliance approved</div>
+              <div class="activity-content">Shipment #7823 approved for US-CA crossing</div>
+            </div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settlements Section -->
+    <section id="settlements" class="portal-section">
+      <div class="section-header">
+        <h1>Autonomous Settlement</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="showUploadModal('settlement')">Upload Invoice</button>
+          <button class="btn btn-primary" onclick="createSettlement()">New Settlement</button>
+        </div>
+      </div>
+
+      <!-- Settlement Stats -->
+      <div class="section-stats">
+        <div class="stat-card">
+          <div class="stat-value">$125,400</div>
+          <div class="stat-label">Total Amount This Month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">156</div>
+          <div class="stat-label">Settlements Processed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">94%</div>
+          <div class="stat-label">Automation Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">2.3 days</div>
+          <div class="stat-label">Avg Processing Time</div>
+        </div>
+      </div>
+
+      <!-- Settlements Table -->
+      <div class="data-table-container">
+        <div class="table-header">
+          <div class="table-title">Recent Settlements</div>
+          <div class="table-actions">
+            <input type="text" class="table-search" placeholder="Search settlements..." />
+            <select class="table-filter">
+              <option value="all">All Status</option>
+              <option value="paid">Paid</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Invoice #</th>
+              <th>Load ID</th>
+              <th>Carrier</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>INV-2024-1248</td>
+              <td>LOAD-4521</td>
+              <td>Acme Trucking</td>
+              <td>$2,450</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+              <td>2024-01-20</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>INV-2024-1247</td>
+              <td>LOAD-4520</td>
+              <td>Global Logistics</td>
+              <td>$1,890</td>
+              <td><span class="status-badge status-paid">Paid</span></td>
+              <td>2024-01-19</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>INV-2024-1246</td>
+              <td>LOAD-4519</td>
+              <td>Freight Masters</td>
+              <td>$3,200</td>
+              <td><span class="status-badge status-processing">Processing</span></td>
+              <td>2024-01-21</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>INV-2024-1245</td>
+              <td>LOAD-4518</td>
+              <td>Swift Transport</td>
+              <td>$1,650</td>
+              <td><span class="status-badge status-pending">Pending</span></td>
+              <td>2024-01-22</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Lanes Section -->
+    <section id="lanes" class="portal-section">
+      <div class="section-header">
+        <h1>Optimized Lanes</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="exportLanes()">Export</button>
+          <button class="btn btn-primary" onclick="analyzeLane()">Analyze New Lane</button>
+        </div>
+      </div>
+
+      <!-- Lane Stats -->
+      <div class="section-stats">
+        <div class="stat-card">
+          <div class="stat-value">$45,200</div>
+          <div class="stat-label">Total Margin Generated</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">127</div>
+          <div class="stat-label">Active Lanes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$890</div>
+          <div class="stat-label">Avg Margin per Lane</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">23%</div>
+          <div class="stat-label">Efficiency Gain</div>
+        </div>
+      </div>
+
+      <!-- Lane Analysis Form -->
+      <div class="lane-analysis">
+        <h2>Lane Intelligence</h2>
+        <form class="analysis-form" onsubmit="analyzeLaneForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Origin</label>
+              <input type="text" placeholder="e.g., Dallas, TX" required />
+            </div>
+            <div class="form-group">
+              <label>Destination</label>
+              <input type="text" placeholder="e.g., Chicago, IL" required />
+            </div>
+            <div class="form-group">
+              <label>Current Rate</label>
+              <input type="number" placeholder="e.g., 1800" required />
+            </div>
+            <div class="form-group">
+              <label>Equipment</label>
+              <select required>
+                <option value="">Select equipment</option>
+                <option value="dry-van">Dry Van</option>
+                <option value="reefer">Reefer</option>
+                <option value="flatbed">Flatbed</option>
+                <option value="tanker">Tanker</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Analyze Lane</button>
+        </form>
+      </div>
+
+      <!-- Lanes Table -->
+      <div class="data-table-container">
+        <div class="table-header">
+          <div class="table-title">Recent Lane Analysis</div>
+          <div class="table-actions">
+            <input type="text" class="table-search" placeholder="Search lanes..." />
+            <select class="table-filter">
+              <option value="all">All Recommendations</option>
+              <option value="highly-recommended">Highly Recommended</option>
+              <option value="recommended">Recommended</option>
+              <option value="consider">Consider</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Origin → Destination</th>
+              <th>Current Rate</th>
+              <th>Projected Margin</th>
+              <th>Attractiveness</th>
+              <th>Demand</th>
+              <th>Recommendation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dallas, TX → Chicago, IL</td>
+              <td>$1,800</td>
+              <td>$420</td>
+              <td><div class="score-bar"><div class="score-fill" style="width: 85%"></div></div><span class="score-value">85</span></td>
+              <td><span class="demand-badge demand-high">High</span></td>
+              <td><span class="rec-badge rec-highly">Highly Recommended</span></td>
+              <td><button class="action-btn">Details</button></td>
+            </tr>
+            <tr>
+              <td>Atlanta, GA → Miami, FL</td>
+              <td>$1,500</td>
+              <td>$380</td>
+              <td><div class="score-bar"><div class="score-fill" style="width: 72%"></div></div><span class="score-value">72</span></td>
+              <td><span class="demand-badge demand-medium">Medium</span></td>
+              <td><span class="rec-badge rec-recommended">Recommended</span></td>
+              <td><button class="action-btn">Details</button></td>
+            </tr>
+            <tr>
+              <td>Seattle, WA → Portland, OR</td>
+              <td>$850</td>
+              <td>$180</td>
+              <td><div class="score-bar"><div class="score-fill" style="width: 58%"></div></div><span class="score-value">58</span></td>
+              <td><span class="demand-badge demand-low">Low</span></td>
+              <td><span class="rec-badge rec-consider">Consider</span></td>
+              <td><button class="action-btn">Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents" class="portal-section">
+      <div class="section-header">
+        <h1>Document Parsing</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="exportDocuments()">Export</button>
+          <button class="btn btn-primary" onclick="showUploadModal('document')">Upload Document</button>
+        </div>
+      </div>
+
+      <!-- Document Stats -->
+      <div class="section-stats">
+        <div class="stat-card">
+          <div class="stat-value">1,247</div>
+          <div class="stat-label">Total Documents Parsed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">94%</div>
+          <div class="stat-label">Average Confidence</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">156</div>
+          <div class="stat-label">Processed Today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">30 min</div>
+          <div class="stat-label">Time Saved per Doc</div>
+        </div>
+      </div>
+
+      <!-- Documents Table -->
+      <div class="data-table-container">
+        <div class="table-header">
+          <div class="table-title">Recent Documents</div>
+          <div class="table-actions">
+            <input type="text" class="table-search" placeholder="Search documents..." />
+            <select class="table-filter">
+              <option value="all">All Types</option>
+              <option value="invoice">Invoice</option>
+              <option value="bol">Bill of Lading</option>
+              <option value="rate-confirmation">Rate Confirmation</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Document ID</th>
+              <th>Type</th>
+              <th>Source</th>
+              <th>Confidence</th>
+              <th>Status</th>
+              <th>Processed</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DOC-8472</td>
+              <td><span class="doc-type doc-bol">BOL</span></td>
+              <td>Upload</td>
+              <td><div class="confidence-bar"><div class="confidence-fill" style="width: 96%"></div></div><span class="confidence-value">96%</span></td>
+              <td><span class="status-badge status-processed">Processed</span></td>
+              <td>32 min ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>DOC-8471</td>
+              <td><span class="doc-type doc-invoice">Invoice</span></td>
+              <td>Email</td>
+              <td><div class="confidence-bar"><div class="confidence-fill" style="width: 92%"></div></div><span class="confidence-value">92%</span></td>
+              <td><span class="status-badge status-processed">Processed</span></td>
+              <td>45 min ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>DOC-8470</td>
+              <td><span class="doc-type doc-rate">Rate Confirmation</span></td>
+              <td>Upload</td>
+              <td><div class="confidence-bar"><div class="confidence-fill" style="width: 88%"></div></div><span class="confidence-value">88%</span></td>
+              <td><span class="status-badge status-processed">Processed</span></td>
+              <td>1 hour ago</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Drivers Section -->
+    <section id="drivers" class="portal-section">
+      <div class="section-header">
+        <h1>Driver Management</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="exportDrivers()">Export</button>
+          <button class="btn btn-primary" onclick="addDriver()">Add Driver</button>
+        </div>
+      </div>
+
+      <!-- Driver Stats -->
+      <div class="section-stats">
+        <div class="stat-card">
+          <div class="stat-value">25</div>
+          <div class="stat-label">Total Drivers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">94.2%</div>
+          <div class="stat-label">Avg Retention Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3</div>
+          <div class="stat-label">High Risk</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">87%</div>
+          <div class="stat-label">Avg Productivity</div>
+        </div>
+      </div>
+
+      <!-- Drivers Table -->
+      <div class="data-table-container">
+        <div class="table-header">
+          <div class="table-title">Driver Overview</div>
+          <div class="table-actions">
+            <input type="text" class="table-search" placeholder="Search drivers..." />
+            <select class="table-filter">
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="warning">Warning</option>
+              <option value="probation">Probation</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Driver ID</th>
+              <th>Name</th>
+              <th>Equipment</th>
+              <th>Retention Score</th>
+              <th>Risk Level</th>
+              <th>Productivity</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DRV-452</td>
+              <td>John Smith</td>
+              <td>Dry Van</td>
+              <td><div class="score-bar"><div class="score-fill good" style="width: 92%"></div></div><span class="score-value">92</span></td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+              <td><div class="score-bar"><div class="score-fill good" style="width: 89%"></div></div><span class="score-value">89%</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>DRV-451</td>
+              <td>Jane Johnson</td>
+              <td>Reefer</td>
+              <td><div class="score-bar"><div class="score-fill medium" style="width: 76%"></div></div><span class="score-value">76</span></td>
+              <td><span class="risk-badge risk-medium">Medium</span></td>
+              <td><div class="score-bar"><div class="score-fill good" style="width: 84%"></div></div><span class="score-value">84%</span></td>
+              <td><span class="status-badge status-warning">Warning</span></td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>DRV-450</td>
+              <td>Mike Williams</td>
+              <td>Flatbed</td>
+              <td><div class="score-bar"><div class="score-fill good" style="width: 88%"></div></div><span class="score-value">88</span></td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+              <td><div class="score-bar"><div class="score-fill good" style="width: 91%"></div></div><span class="score-value">91%</span></td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Border Section -->
+    <section id="border" class="portal-section">
+      <div class="section-header">
+        <h1>Border Compliance</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="exportBorder()">Export</button>
+          <button class="btn btn-primary" onclick="addShipment()">New Shipment</button>
+        </div>
+      </div>
+
+      <!-- Border Stats -->
+      <div class="section-stats">
+        <div class="stat-card">
+          <div class="stat-value">45</div>
+          <div class="stat-label">Total Shipments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">89%</div>
+          <div class="stat-label">Approval Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Pending Approval</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">45 min</div>
+          <div class="stat-label">Time Saved per Shipment</div>
+        </div>
+      </div>
+
+      <!-- Border Shipments Table -->
+      <div class="data-table-container">
+        <div class="table-header">
+          <div class="table-title">Cross-Border Shipments</div>
+          <div class="table-actions">
+            <input type="text" class="table-search" placeholder="Search shipments..." />
+            <select class="table-filter">
+              <option value="all">All Routes</option>
+              <option value="us-ca">US-Canada</option>
+              <option value="us-mx">US-Mexico</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Shipment ID</th>
+              <th>Route</th>
+              <th>Equipment</th>
+              <th>Compliance Score</th>
+              <th>Status</th>
+              <th>Scheduled Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SHP-7823</td>
+              <td>Los Angeles, CA → Toronto, ON</td>
+              <td>Dry Van</td>
+              <td><div class="compliance-bar"><div class="compliance-fill" style="width: 92%"></div></div><span class="compliance-value">92</span></td>
+              <td><span class="status-badge status-approved">Approved</span></td>
+              <td>2024-01-20</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>SHP-7822</td>
+              <td>Houston, TX → Mexico City, MX</td>
+              <td>Reefer</td>
+              <td><div class="compliance-bar"><div class="compliance-fill" style="width: 88%"></div></div><span class="compliance-value">88</span></td>
+              <td><span class="status-badge status-pending">Pending</span></td>
+              <td>2024-01-21</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>SHP-7821</td>
+              <td>Seattle, WA → Vancouver, BC</td>
+              <td>Dry Van</td>
+              <td><div class="compliance-bar"><div class="compliance-fill" style="width: 95%"></div></div><span class="compliance-value">95</span></td>
+              <td><span class="status-badge status-approved">Approved</span></td>
+              <td>2024-01-19</td>
+              <td><button class="action-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="portal-section">
+      <div class="section-header">
+        <h1>Analytics & Reports</h1>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="exportAnalytics()">Export Report</button>
+          <button class="btn btn-primary" onclick="generateReport()">Generate Custom Report</button>
+        </div>
+      </div>
+
+      <!-- Analytics Overview -->
+      <div class="analytics-overview">
+        <div class="analytics-card">
+          <h3>Revenue Trend</h3>
+          <div class="chart-placeholder">
+            <div class="chart-placeholder-content">
+              <span class="chart-icon">📈</span>
+              <span>Revenue Chart</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="analytics-card">
+          <h3>Margin Analysis</h3>
+          <div class="chart-placeholder">
+            <div class="chart-placeholder-content">
+              <span class="chart-icon">💰</span>
+              <span>Margin Chart</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="analytics-card">
+          <h3>Performance Metrics</h3>
+          <div class="chart-placeholder">
+            <div class="chart-placeholder-content">
+              <span class="chart-icon">⚡</span>
+              <span>Performance Chart</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="analytics-card">
+          <h3>Layer Utilization</h3>
+          <div class="chart-placeholder">
+            <div class="chart-placeholder-content">
+              <span class="chart-icon">📊</span>
+              <span>Utilization Chart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Reports -->
+      <div class="reports-section">
+        <h2>Detailed Reports</h2>
+        <div class="report-list">
+          <div class="report-item">
+            <div class="report-icon">📄</div>
+            <div class="report-content">
+              <div class="report-title">Monthly Settlement Report</div>
+              <div class="report-description">Complete breakdown of all settlements and payments</div>
+            </div>
+            <button class="btn btn-secondary">Download</button>
+          </div>
+          
+          <div class="report-item">
+            <div class="report-icon">🛤️</div>
+            <div class="report-content">
+              <div class="report-title">Lane Optimization Analysis</div>
+              <div class="report-description">Detailed lane intelligence and recommendations</div>
+            </div>
+            <button class="btn btn-secondary">Download</button>
+          </div>
+          
+          <div class="report-item">
+            <div class="report-icon">🚛</div>
+            <div class="report-content">
+              <div class="report-title">Driver Retention Report</div>
+              <div class="report-description">Comprehensive driver performance and risk analysis</div>
+            </div>
+            <button class="btn btn-secondary">Download</button>
+          </div>
+          
+          <div class="report-item">
+            <div class="report-icon">🌍</div>
+            <div class="report-content">
+              <div class="report-title">Border Compliance Summary</div>
+              <div class="report-description">Cross-border shipment compliance and clearance status</div>
+            </div>
+            <button class="btn btn-secondary">Download</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings" class="portal-section">
+      <div class="section-header">
+        <h1>Settings</h1>
+      </div>
+
+      <!-- Settings Sections -->
+      <div class="settings-container">
+        <div class="settings-section">
+          <h2>Account Settings</h2>
+          <form class="settings-form" onsubmit="saveAccountSettings(event)">
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" value="Acme Trucking" />
+            </div>
+            <div class="form-group">
+              <label>Primary Email</label>
+              <input type="email" value="john@acmetrucking.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" value="+1-555-123-4567" />
+            </div>
+            <div class="form-group">
+              <label>Timezone</label>
+              <select>
+                <option value="EST" selected>Eastern Time</option>
+                <option value="CST">Central Time</option>
+                <option value="MST">Mountain Time</option>
+                <option value="PST">Pacific Time</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="settings-section">
+          <h2>Notification Preferences</h2>
+          <form class="settings-form" onsubmit="saveNotificationSettings(event)">
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Email notifications for settlements</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Driver risk alerts</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" checked />
+                <span>Border compliance updates</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" />
+                <span>Daily summary reports</span>
+              </label>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" />
+                <span>Weekly analytics digest</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="settings-section">
+          <h2>API & Integrations</h2>
+          <div class="api-settings">
+            <div class="api-key-section">
+              <h3>API Key</h3>
+              <div class="api-key-display">
+                <span class="api-key">velcun_*******************x7k9</span>
+                <button class="btn btn-secondary btn-small">Regenerate</button>
+              </div>
+            </div>
+            
+            <div class="integrations-section">
+              <h3>Connected Integrations</h3>
+              <div class="integration-list">
+                <div class="integration-item">
+                  <div class="integration-logo">🚚</div>
+                  <div class="integration-info">
+                    <div class="integration-name">McLeod LoadMaster</div>
+                    <div class="integration-status">Connected</div>
+                  </div>
+                  <button class="btn btn-secondary btn-small">Configure</button>
+                </div>
+                
+                <div class="integration-item">
+                  <div class="integration-logo">📊</div>
+                  <div class="integration-info">
+                    <div class="integration-name">Samsara</div>
+                    <div class="integration-status">Connected</div>
+                  </div>
+                  <button class="btn btn-secondary btn-small">Configure</button>
+                </div>
+                
+                <div class="integration-item">
+                  <div class="integration-logo">➕</div>
+                  <div class="integration-info">
+                    <div class="integration-name">Add Integration</div>
+                    <div class="integration-status">Available</div>
+                  </div>
+                  <button class="btn btn-primary btn-small">Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h2>Security</h2>
+          <form class="settings-form" onsubmit="updateSecurity(event)">
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password" />
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" />
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" />
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" />
+                <span>Enable two-factor authentication</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Password</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Portal Footer -->
+  <footer class="portal-footer">
+    <div class="portal-footer-inner">
+      <div class="footer-left">
+        <span>© 2024 VELCUN. All rights reserved.</span>
+      </div>
+      <div class="footer-right">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portal Scripts -->
+  <script src="/portal/portal.js?v=20260613p"></script>
+</body>
+</html>

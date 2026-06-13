@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to VELCUN - Onboarding</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613o" />
+  <link rel="stylesheet" href="/portal/portal.css?v=20260613o" />
+  <link rel="stylesheet" href="/onboarding/onboarding.css?v=20260613o" />
+</head>
+<body class="onboarding-body">
+  <!-- Onboarding Container -->
+  <div class="onboarding-container">
+    <!-- Progress Header -->
+    <div class="onboarding-header">
+      <div class="onboarding-logo">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+          <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>VELCUN</span>
+      </div>
+      
+      <div class="onboarding-progress">
+        <div class="progress-steps">
+          <div class="progress-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Account</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Fleet Info</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">Automation</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step" data-step="4">
+            <div class="step-number">4</div>
+            <div class="step-label">Integration</div>
+          </div>
+          <div class="progress-connector"></div>
+          <div class="progress-step" data-step="5">
+            <div class="step-number">5</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboarding-actions">
+        <button class="skip-btn" onclick="skipOnboarding()">Skip</button>
+      </div>
+    </div>
+
+    <!-- Onboarding Content -->
+    <div class="onboarding-content">
+      <!-- Step 1: Account Setup -->
+      <div class="onboarding-step active" data-step="1">
+        <div class="step-illustration">
+          <div class="illustration-icon">👤</div>
+        </div>
+        <h2>Welcome to VELCUN</h2>
+        <p>Let's set up your account to get started with autonomous freight operations.</p>
+
+        <form class="onboarding-form" onsubmit="handleStep1(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" name="company" placeholder="Acme Trucking" required />
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="+1-555-123-4567" />
+            </div>
+            <div class="form-group">
+              <label>Timezone</label>
+              <select name="timezone" required>
+                <option value="EST">Eastern Time (EST)</option>
+                <option value="CST">Central Time (CST)</option>
+                <option value="MST">Mountain Time (MST)</option>
+                <option value="PST">Pacific Time (PST)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Role</label>
+            <select name="role" required>
+              <option value="admin">Fleet Manager / Admin</option>
+              <option value="dispatcher">Dispatcher</option>
+              <option value="owner">Owner / Operator</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Fleet Information -->
+      <div class="onboarding-step" data-step="2">
+        <div class="step-illustration">
+          <div class="illustration-icon">🚛</div>
+        </div>
+        <h2>Tell Us About Your Fleet</h2>
+        <p>This information helps us tailor VELCUN to your specific needs.</p>
+
+        <form class="onboarding-form" onsubmit="handleStep2(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fleet Size</label>
+              <select name="fleetSize" required>
+                <option value="1-10">1-10 trucks</option>
+                <option value="11-25">11-25 trucks</option>
+                <option value="26-50">26-50 trucks</option>
+                <option value="51-100">51-100 trucks</option>
+                <option value="100+">100+ trucks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Primary Equipment</label>
+              <select name="equipment" required>
+                <option value="dry-van">Dry Van</option>
+                <option value="reefer">Reefer</option>
+                <option value="flatbed">Flatbed</option>
+                <option value="tanker">Tanker</option>
+                <option value="mixed">Mixed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Operating Region</label>
+              <select name="region" required>
+                <option value="regional">Regional</option>
+                <option value="national">National</option>
+                <option value="local">Local</option>
+                <option value="international">International</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Primary Lane Type</label>
+              <select name="laneType" required>
+                <option value="dedicated">Dedicated</option>
+                <option value="spot">Spot Market</option>
+                <option value="both">Both</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>What are your biggest challenges?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="challenges" value="settlement" />
+                <span>Invoice processing & settlement delays</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="challenges" value="lanes" />
+                <span>Identifying profitable lanes</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="challenges" value="documents" />
+                <span>Manual document entry & processing</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="challenges" value="drivers" />
+                <span>Driver retention & turnover</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="challenges" value="border" />
+                <span>Cross-border compliance issues</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 3: Automation Setup -->
+      <div class="onboarding-step" data-step="3">
+        <div class="step-illustration">
+          <div class="illustration-icon">⚡</div>
+        </div>
+        <h2>Configure Automation Layers</h2>
+        <p>Select the automation layers you want to enable for your fleet.</p>
+
+        <form class="onboarding-form" onsubmit="handleStep3(event)">
+          <div class="automation-layers">
+            <div class="layer-option">
+              <div class="layer-header">
+                <div class="layer-icon">💰</div>
+                <div class="layer-info">
+                  <div class="layer-name">Autonomous Settlement</div>
+                  <div class="layer-desc">Automated invoice processing and payment workflow</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="settlement" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="layer-benefits">
+                <span class="benefit-tag">📈 94% automation rate</span>
+                <span class="benefit-tag">⏱️ 2.3 day avg processing time</span>
+              </div>
+            </div>
+
+            <div class="layer-option">
+              <div class="layer-header">
+                <div class="layer-icon">🛤️</div>
+                <div class="layer-info">
+                  <div class="layer-name">Predictive Lane Optimization</div>
+                  <div class="layer-desc">AI-powered lane profitability analysis</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="lanes" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="layer-benefits">
+                <span class="benefit-tag">🎯 23% efficiency gain</span>
+                <span class="benefit-tag">💰 $890 avg margin per lane</span>
+              </div>
+            </div>
+
+            <div class="layer-option">
+              <div class="layer-header">
+                <div class="layer-icon">📄</div>
+                <div class="layer-info">
+                  <div class="layer-name">Unstructured Data Ingestion</div>
+                  <div class="layer-desc">AI-powered document parsing and extraction</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="parse" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="layer-benefits">
+                <span class="benefit-tag">🎯 92% accuracy</span>
+                <span class="benefit-tag">⏱️ 30 min time saved per doc</span>
+              </div>
+            </div>
+
+            <div class="layer-option">
+              <div class="layer-header">
+                <div class="layer-icon">🚛</div>
+                <div class="layer-info">
+                  <div class="layer-name">Driver-First Retention</div>
+                  <div class="layer-desc">AI-powered driver retention scoring</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="drivers" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="layer-benefits">
+                <span class="benefit-tag">📈 94.2% retention rate</span>
+                <span class="benefit-tag">⚠️ Early risk detection</span>
+              </div>
+            </div>
+
+            <div class="layer-option">
+              <div class="layer-header">
+                <div class="layer-icon">🌍</div>
+                <div class="layer-info">
+                  <div class="layer-name">Border Compliance</div>
+                  <div class="layer-desc">Automated cross-border compliance checking</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="border" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="layer-benefits">
+                <span class="benefit-tag">✅ 89% approval rate</span>
+                <span class="benefit-tag">⏱️ 45 min time saved</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 4: Integration Setup -->
+      <div class="onboarding-step" data-step="4">
+        <div class="step-illustration">
+          <div class="illustration-icon">🔗</div>
+        </div>
+        <h2>Connect Your Systems</h2>
+        <p>Integrate with your existing TMS and tools for seamless operation.</p>
+
+        <form class="onboarding-form" onsubmit="handleStep4(event)">
+          <div class="integration-options">
+            <div class="integration-option">
+              <div class="integration-header">
+                <div class="integration-logo">🚚</div>
+                <div class="integration-info">
+                  <div class="integration-name">TMS Integration</div>
+                  <div class="integration-desc">Connect with your transportation management system</div>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="setupTMS()">Connect</button>
+              </div>
+            </div>
+
+            <div class="integration-option">
+              <div class="integration-header">
+                <div class="integration-logo">📧</div>
+                <div class="integration-info">
+                  <div class="integration-name">Email Integration</div>
+                  <div class="integration-desc">Auto-parse documents from email attachments</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="emailIntegration" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="integration-option">
+              <div class="integration-header">
+                <div class="integration-logo">🔔</div>
+                <div class="integration-info">
+                  <div class="integration-name">Webhook Notifications</div>
+                  <div class="integration-desc">Real-time notifications to your systems</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" name="webhooks" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Skip integration for now?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="skipIntegration" />
+                <span>I'll set up integrations later</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+            <button type="submit" class="btn btn-primary">Complete Setup</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 5: Complete -->
+      <div class="onboarding-step" data-step="5">
+        <div class="step-illustration">
+          <div class="illustration-icon success">✅</div>
+        </div>
+        <h2>You're All Set!</h2>
+        <p>Your VELCUN account is ready. Here's what happens next:</p>
+
+        <div class="next-steps">
+          <div class="next-step">
+            <div class="step-icon">📧</div>
+            <div class="step-content">
+              <div class="step-title">Verification Email</div>
+              <div class="step-desc">Check your email to verify your account</div>
+            </div>
+          </div>
+          <div class="next-step">
+            <div class="step-icon">👥</div>
+            <div class="step-content">
+              <div class="step-title">Onboarding Call</div>
+              <div class="step-desc">Our team will reach out to schedule your setup call</div>
+            </div>
+          </div>
+          <div class="next-step">
+            <div class="step-icon">🚚</div>
+            <div class="step-content">
+              <div class="step-title">Start Automating</div>
+              <div class="step-desc">Access your dashboard and begin using VELCUN</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="completion-actions">
+          <button class="btn btn-primary" onclick="goToDashboard()">Go to Dashboard</button>
+          <button class="btn btn-secondary" onclick="scheduleCall()">Schedule Onboarding Call</button>
+        </div>
+
+        <div class="support-info">
+          <p>Need help? Contact our support team at <a href="mailto:support@velcun.com">support@velcun.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/onboarding/onboarding.js?v=20260613o"></script>
+</body>
+</html>

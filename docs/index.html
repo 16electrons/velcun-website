@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELCUN API Documentation</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613d" />
+  <link rel="stylesheet" href="/docs/docs.css?v=20260613d" />
+</head>
+<body class="docs-body">
+  <!-- Docs Header -->
+  <header class="docs-header">
+    <div class="docs-header-inner">
+      <div class="docs-logo">
+        <a href="/">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+            <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>VELCUN</span>
+        </a>
+      </div>
+      
+      <div class="docs-nav">
+        <a href="#overview" class="docs-nav-item active" data-section="overview">Overview</a>
+        <a href="#auth" class="docs-nav-item" data-section="auth">Authentication</a>
+        <a href="#settlement" class="docs-nav-item" data-section="settlement">Settlement</a>
+        <a href="#lanes" class="docs-nav-item" data-section="lanes">Lane IQ</a>
+        <a href="#documents" class="docs-nav-item" data-section="documents">Parse</a>
+        <a href="#drivers" class="docs-nav-item" data-section="drivers">Driver Yield</a>
+        <a href="#border" class="docs-nav-item" data-section="border">Border</a>
+        <a href="#dashboard" class="docs-nav-item" data-section="dashboard">Dashboard</a>
+        <a href="#notifications" class="docs-nav-item" data-section="notifications">Notifications</a>
+        <a href="#webhooks" class="docs-nav-item" data-section="webhooks">Webhooks</a>
+        <a href="#tms" class="docs-nav-item" data-section="tms">TMS Integration</a>
+    </div>
+    </div>
+  </header>
+
+  <!-- Docs Main -->
+  <main class="docs-main">
+    <!-- Overview Section -->
+    <section id="overview" class="docs-section active">
+      <div class="docs-content">
+        <h1>VELCUN API Documentation</h1>
+        <p class="docs-intro">Complete API reference for the VELCUN automation platform. Build powerful freight management integrations with our comprehensive REST API.</p>
+        
+        <div class="docs-features">
+          <div class="docs-feature">
+            <div class="feature-icon">🔑</div>
+            <div class="feature-title">JWT Authentication</div>
+            <div class="feature-desc">Secure token-based authentication with role-based access control</div>
+          </div>
+          <div class="docs-feature">
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">5 Automation Layers</div>
+            <div class="feature-desc">Complete access to Settlement, Lane IQ, Parse, Driver Yield, and Border APIs</div>
+          </div>
+          <div class="docs-feature">
+            <div class="feature-icon">🔄</div>
+            <div class="feature-title">Real-time Webhooks</div>
+            <div class="feature-desc">Event-driven architecture with customizable webhooks</div>
+          </div>
+          <div class="docs-feature">
+            <div class="feature-icon">📈</div>
+            <div class="feature-title">Analytics & Reporting</div>
+            <div class="feature-desc">Comprehensive analytics and reporting endpoints</div>
+          </div>
+        </div>
+
+        <div class="quick-start">
+          <h2>Quick Start</h2>
+          <div class="code-block">
+            <div class="code-header">bash</div>
+            <pre><code># 1. Get your API key
+# Contact us at hello@velcun.com to get your API key
+
+# 2. Authenticate
+curl -X POST https://velcun.com/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "your@email.com",
+    "password": "your-password"
+  }'
+
+# 3. Use the token in requests
+curl -X GET https://velcun.com/api/layers/dashboard \
+  -H "Authorization: Bearer YOUR_TOKEN"</code></pre>
+          </div>
+        </div>
+
+        <div class="api-base-url">
+          <h2>Base URL</h2>
+          <div class="code-block">
+            <div class="code-header">text</div>
+            <pre><code>https://velcun.com/api</code></pre>
+          </div>
+        </div>
+
+        <div class="rate-limits">
+          <h2>Rate Limits</h2>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Requests/Minute</th>
+                <th>Requests/Hour</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Starter</td>
+                <td>100</td>
+                <td>6,000</td>
+              </tr>
+              <tr>
+                <td>Professional</td>
+                <td>500</td>
+                <td>30,000</td>
+              </tr>
+              <tr>
+                <td>Enterprise</td>
+                <td>2,000</td>
+                <td>120,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Authentication Section -->
+    <section id="auth" class="docs-section">
+      <div class="docs-content">
+        <h1>Authentication API</h1>
+        
+        <div class="endpoint-list">
+          <!-- POST /auth/login -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/auth/login</div>
+              <div class="endpoint-badge public">Public</div>
+            </div>
+            <div class="endpoint-desc">Authenticate user and receive JWT token</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "email": "string (required)",
+  "password": "string (required)"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "token": "string (JWT)",
+  "user": {
+    "id": "string",
+    "email": "string",
+    "name": "string",
+    "role": "string"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- POST /auth/register -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/auth/register</div>
+              <div class="endpoint-badge public">Public</div>
+            </div>
+            <div class="endpoint-desc">Register new user account</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "email": "string (required)",
+  "password": "string (required, min 8 chars)",
+  "name": "string (required)",
+  "company": "string (required)"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "token": "string (JWT)",
+  "user": {
+    "id": "string",
+    "email": "string",
+    "name": "string",
+    "company": "string",
+    "role": "user"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settlement Section -->
+    <section id="settlement" class="docs-section">
+      <div class="docs-content">
+        <h1>Autonomous Settlement API</h1>
+        <p class="docs-intro">Automated invoice processing and payment workflow management.</p>
+
+        <div class="endpoint-list">
+          <!-- POST /layers/settlement -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/layers/settlement</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Create new settlement record for automated processing</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "loadId": "string (required)",
+  "invoiceNumber": "string",
+  "carrier": "string",
+  "shipper": "string",
+  "amount": "number (required)",
+  "dueDate": "date (ISO format)",
+  "invoiceDate": "date (ISO format)",
+  "status": "string (default: pending)",
+  "documents": ["array of document objects"],
+  "ediData": "object",
+  "notes": "string"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Settlement created and processing initiated",
+  "id": "string (settlement ID)"
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- GET /layers/settlement -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">GET</div>
+              <div class="endpoint-path">/layers/settlement</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Fetch settlement records with optional filtering</div>
+            
+            <div class="endpoint-params">
+              <div class="endpoint-title">Query Parameters</div>
+              <div class="code-block">
+                <div class="code-header">text</div>
+                <pre><code>?fleetId=string
+&status=pending|processing|validated|paid
+&startDate=ISO-date
+&endDate=ISO-date
+&limit=number (default: 50)
+&offset=number</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "data": ["array of settlement objects"],
+  "totalCount": number
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lane IQ Section -->
+    <section id="lanes" class="docs-section">
+      <div class="docs-content">
+        <h1>Predictive Lane Optimization API</h1>
+        <p class="docs-intro">AI-powered lane profitability analysis and demand prediction.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/layers/lane-optimization</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Analyze lane profitability and get AI-powered recommendations</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "origin": "string (required)",
+  "destination": "string (required)",
+  "weight": "number",
+  "equipment": "string",
+  "loadType": "string",
+  "currentRate": "number (required)",
+  "proposedRate": "number",
+  "distance": "number",
+  "estimatedDeadhead": "number"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Lane intelligence created",
+  "id": "string",
+  "metrics": {
+    "ratePerMile": number,
+    "profitMargin": number,
+    "projectedMargin": number,
+    "attractivenessScore": number (0-100),
+    "demandLevel": "high|medium|low",
+    "recommendation": "highly recommended|recommended|consider|not recommended"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents" class="docs-section">
+      <div class="docs-content">
+        <h1>Unstructured Data Ingestion API</h1>
+        <p class="docs-intro">AI-powered document parsing and data extraction from PDF, emails, EDI, and more.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/layers/parse</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Parse document and extract structured data</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "documentType": "string (invoice|bill_of_lading|rate_confirmation|email|load_board_post)",
+  "source": "string (email|upload|API)",
+  "rawContent": "string (required)",
+  "fileName": "string",
+  "metadata": "object",
+  "priority": "string (normal|high|urgent)"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Document parsed successfully",
+  "id": "string",
+  "parsedData": {
+    "confidence": number (0-100),
+    "extractedFields": ["array of field names"],
+    "data": "object"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drivers Section -->
+    <section id="drivers" class="docs-section">
+      <div class="docs-content">
+        <h1>Driver-First Retention API</h1>
+        <p class="docs-intro">AI-powered driver retention scoring and performance optimization.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/layers/driver-yield</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Update driver profile and calculate retention score</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "driverId": "string (required)",
+  "firstName": "string (required)",
+  "lastName": "string",
+  "phone": "string",
+  "email": "string",
+  "hireDate": "date",
+  "equipment": "string",
+  "currentRoute": "string",
+  "status": "active|warning|probation|inactive|terminated",
+  "performanceMetrics": {
+    "onTimeDeliveryPercent": number,
+    "safetyScore": number (1-5),
+    "customerSatisfaction": number (1-5),
+    "loadCount": number,
+    "avgHomeTime": number
+  }
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Driver profile updated",
+  "driverId": "string",
+  "metrics": {
+    "retentionScore": number (0-100),
+    "riskLevel": "low|medium|high",
+    "productivityScore": number (0-100),
+    "overallDriverYield": number (0-100),
+    "recommendations": ["array of recommendations"]
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Border Section -->
+    <section id="border" class="docs-section">
+      <div class="docs-content">
+        <h1>Border Compliance API</h1>
+        <p class="docs-intro">Automated cross-border compliance checking and document management.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/layers/border-compliance</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Check border compliance and determine required documents</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "shipmentId": "string",
+  "origin": "string (required)",
+  "destination": "string (required)",
+  "originCountry": "string (required)",
+  "destinationCountry": "string (required)",
+  "equipment": "string",
+  "cargoType": "string",
+  "carrier": "string",
+  "scheduledDate": "date",
+  "hazmat": boolean,
+  "temperatureControl": boolean,
+  "weight": "number"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Shipment compliance check completed",
+  "shipmentId": "string",
+  "complianceCheck": {
+    "score": number (0-100),
+    "approved": boolean,
+    "requiredDocuments": ["array of required docs"],
+    "missingDocuments": ["array of missing docs"],
+    "flaggedIssues": ["array of compliance issues"]
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="docs-section">
+      <div class="docs-content">
+        <h1>Dashboard API</h1>
+        <p class="docs-intro">Aggregated analytics and metrics across all 5 automation layers.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">GET</div>
+              <div class="endpoint-path">/layers/dashboard</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Get comprehensive dashboard data with all layer metrics</div>
+            
+            <div class="endpoint-params">
+              <div class="endpoint-title">Query Parameters</div>
+              <div class="code-block">
+                <div class="code-header">text</div>
+                <pre><code>?fleetId=string
+&dateRange={"startDate":"ISO-date","endDate":"ISO-date"}
+&layer=settlement|lanes|documents|drivers|border
+&detailed=true</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "summary": {
+    "totalRecords": number,
+    "layersActive": 5,
+    "lastUpdated": "date"
+  },
+  "layers": {
+    "settlement": {
+      "name": "Autonomous Settlement (Settle)",
+      "metrics": {...}
+    },
+    ...
+  },
+  "overall": {
+    "totalSavings": number,
+    "automationROI": number,
+    "efficiencyScore": number
+  },
+  "insights": ["array of actionable insights"]
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section id="notifications" class="docs-section">
+      <div class="docs-content">
+        <h1>Notifications API</h1>
+        <p class="docs-section">Real-time notification management for users and fleets.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/notifications</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Create and send real-time notifications</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "userId": "string",
+  "fleetId": "string",
+  "type": "alert|info|success|warning|error",
+  "title": "string (required)",
+  "message": "string (required)",
+  "priority": "normal|high|urgent",
+  "data": "object",
+  "expiry": "ISO-date"
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Notification created successfully",
+  "id": "string"
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Webhooks Section -->
+    <section id="webhooks" class="docs-section">
+      <div class="docs-content">
+        <h1>Webhooks API</h1>
+        <p class="docs-section">Configure webhooks for event-driven integrations.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/webhooks</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Register webhook for specific events</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "fleetId": "string",
+  "name": "string (required)",
+  "eventType": "settlement.paid|lane.optimized|document.parsed|driver.risk_high|border.appoved",
+  "targetUrl": "string (required)",
+  "secret": "string (for signature verification)",
+  "isActive": boolean (default: true),
+  "retryConfig": {
+    "maxRetries": number (default: 3),
+    "retryDelay": number (default: 5000)
+  }
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "Webhook created successfully",
+  "id": "string",
+  "secret": "string (generated if not provided)"
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TMS Integration Section -->
+    <section id="tms" class="docs-section">
+      <div class="docs-content">
+        <h1>TMS Integration API</h1>
+        <p class="docs-intro">Integrate with 7 major TMS providers for data synchronization.</p>
+
+        <div class="endpoint-list">
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <div class="endpoint-method">POST</div>
+              <div class="endpoint-path">/tms-integration?tmsProvider=mcleod</div>
+              <div class="endpoint-badge protected">Protected</div>
+            </div>
+            <div class="endpoint-desc">Test TMS connection or sync data from provider</div>
+            
+            <div class="endpoint-request">
+              <div class="endpoint-title">Request Body</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "action": "test_connection|sync_loads|push_settlement",
+  "fleetId": "string",
+  "config": {
+    "apiKey": "string",
+    "apiSecret": "string",
+    "environment": "production"
+  }
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="endpoint-response">
+              <div class="endpoint-title">Response</div>
+              <div class="code-block">
+                <div class="code-header">json</div>
+                <pre><code>{
+  "success": true,
+  "message": "TMS connection successful",
+  "version": "12.x"
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="supported-tms">
+          <h2>Supported TMS Providers</h2>
+          <div class="tms-list">
+            <div class="tms-item">
+              <div class="tms-name">McLeod LoadMaster</div>
+              <div class="tms-code">mcleod</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">Trimble TMW</div>
+              <div class="tms-code">trimble</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">MercuryGate</div>
+              <div class="tms-code">mercurygate</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">Aljex</div>
+              <div class="tms-code">aljex</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">ProTransport</div>
+              <div class="tms-code">protransport</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">Tailwind</div>
+              <div class="tms-code">tailwind</div>
+            </div>
+            <div class="tms-item">
+              <div class="tms-name">FreightPOP</div>
+              <div class="tms-code">freightpop</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/docs/docs.js?v=20260613d"></script>
+</body>
+</html>
