@@ -54,10 +54,10 @@ class UnifiedDashboard {
   async initiateDemoLogin() {
     try {
       this.showNotification('Starting demo login...', 'info');
-      
-      const response = await fetch(`${this.apiBase}/auth/login?action=demo-login`);
+
+      const response = await fetch(`${this.apiBase}/auth/login.js?action=demo-login`);
       const data = await response.json();
-      
+
       if (data.success) {
         this.token = data.token;
         this.user = data.user;
@@ -71,7 +71,7 @@ class UnifiedDashboard {
       }
     } catch (error) {
       console.error('Demo login error:', error);
-      this.showNotification('Demo login failed', 'error');
+      this.showNotification('Demo login failed: ' + error.message, 'error');
     }
   }
 
@@ -87,7 +87,7 @@ class UnifiedDashboard {
     try {
       this.showNotification('Signing in...', 'info');
       
-      const response = await fetch(`${this.apiBase}/auth/login?action=login`, {
+      const response = await fetch(`${this.apiBase}/auth/login.js?action=login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,13 +110,13 @@ class UnifiedDashboard {
       }
     } catch (error) {
       console.error('Email login error:', error);
-      this.showNotification('Login failed', 'error');
+      this.showNotification('Login failed: ' + error.message, 'error');
     }
   }
 
   async getUserInfo() {
     try {
-      const response = await fetch(`${this.apiBase}/auth/google?action=me`, {
+      const response = await fetch(`${this.apiBase}/auth/login.js?action=me`, {
         headers: {
           'Authorization': `Bearer ${this.token}`
         }
@@ -136,7 +136,7 @@ class UnifiedDashboard {
 
   async logout() {
     try {
-      await fetch(`${this.apiBase}/auth/google?action=logout`);
+      await fetch(`${this.apiBase}/auth/login.js?action=logout`);
       localStorage.removeItem('velcun_token');
       localStorage.removeItem('velcun_user');
       this.token = null;
