@@ -19,6 +19,207 @@
 
   let isAnnual = false;
 
+  // API Configuration
+  const API_BASE = window.location.origin + '/api';
+
+  // API Helper Functions
+  async function submitContactForm(formData) {
+    try {
+      const response = await fetch(`${API_BASE}/submit-contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async function submitAuditForm(formData) {
+    try {
+      const response = await fetch(`${API_BASE}/submit-audit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error submitting audit form:', error);
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async function calculateROI(fleetSize, plan, billing) {
+    try {
+      const params = new URLSearchParams({
+        fleetSize,
+        plan: plan || 'dispatch',
+        billing: billing || 'monthly'
+      });
+      const response = await fetch(`${API_BASE}/calculate-roi?${params}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error calculating ROI:', error);
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async function submitPilotApplication(formData) {
+    try {
+      const response = await fetch(`${API_BASE}/submit-pilot`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error submitting pilot application:', error);
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  // Form Submissions
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = {
+        name: contactForm.name.value,
+        email: contactForm.email.value,
+        phone: contactForm.phone.value,
+        company: contactForm.company.value,
+        fleetSize: contactForm.fleet.value,
+        plan: contactForm.plan.value,
+        notes: contactForm.message.value
+      };
+
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      const result = await submitContactForm(formData);
+
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+
+      if (result.success) {
+        alert('Thank you for your submission! We\'ll be in touch within 24 hours.');
+        contactForm.reset();
+        // Reset to first step
+        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+        document.querySelector('.form-step[data-step="1"]').classList.add('active');
+        updateFormProgress(1);
+      } else {
+        alert('Error submitting form. Please try again.');
+      }
+    });
+  }
+
+  // Quick Audit Form in Hero
+  const quickAuditForm = document.getElementById('quick-audit');
+  if (quickAuditForm) {
+    quickAuditForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = {
+        fleetSize: document.getElementById('fleet-size-quick').value,
+        email: document.getElementById('email-quick').value
+      };
+
+      const submitBtn = quickAuditForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Calculating...';
+      submitBtn.disabled = true;
+
+      const result = await submitAuditForm(formData);
+
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+
+      if (result.success) {
+        alert(`Based on your ${formData.fleetSize}-truck fleet, you could save $${result.roi.netMonthlyProfit?.toLocaleString()}/month! We'll email you a full savings report.`);
+        quickAuditForm.reset();
+      } else {
+        alert('Error calculating savings. Please try again.');
+      }
+    });
+  }
+
+  // ROI Calculator Integration
+  window.calculateROI = async function(fleetSize, plan, billing) {
+    const result = await calculateROI(fleetSize, plan, billing);
+    if (result.success) {
+      return result.data;
+    }
+    return null;
+  };
+
+  // Multi-step Form Navigation
+  function updateFormProgress(currentStep) {
+    const progressSteps = document.querySelectorAll('.progress-step');
+    progressSteps.forEach(step => {
+      const stepNum = parseInt(step.dataset.step);
+      if (stepNum <= currentStep) {
+        step.classList.add('completed');
+        step.classList.remove('active');
+      } else if (stepNum === currentStep) {
+        step.classList.add('active');
+        step.classList.remove('completed');
+      } else {
+        step.classList.remove('active', 'completed');
+      }
+    });
+  }
+
+  // Next/Previous step buttons
+  const nextButtons = document.querySelectorAll('.next-step');
+  nextButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const currentFormStep = btn.closest('.form-step');
+      const currentStepNum = parseInt(currentFormStep.dataset.step);
+      const nextStep = document.querySelector(`.form-step[data-step="${currentStepNum + 1}"]`);
+      
+      // Simple validation
+      const requiredFields = currentFormStep.querySelectorAll('[required]');
+      let isValid = true;
+      requiredFields.forEach(field => {
+        if (!field.value) {
+          isValid = false;
+          field.style.borderColor = '#ef4444';
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+
+      if (isValid && nextStep) {
+        currentFormStep.classList.remove('active');
+        nextStep.classList.add('active');
+        updateFormProgress(currentStepNum + 1);
+      }
+    });
+  });
+
+  const prevButtons = document.querySelectorAll('.prev-step');
+  prevButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const currentFormStep = btn.closest('.form-step');
+      const currentStepNum = parseInt(currentFormStep.dataset.step);
+      const prevStep = document.querySelector(`.form-step[data-step="${currentStepNum - 1}"]`);
+      
+      if (prevStep) {
+        currentFormStep.classList.remove('active');
+        prevStep.classList.add('active');
+        updateFormProgress(currentStepNum - 1);
+      }
+    });
+  });
+
   window.addEventListener("scroll", () => {
     header.classList.toggle("scrolled", window.scrollY > 20);
   });
