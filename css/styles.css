@@ -4164,4 +4164,539 @@ h3 {
   .footer-links {
     gap: 2rem;
   }
+
+  /* Mobile-Specific Optimizations */
+  .container {
+    width: calc(100% - 1.5rem);
+  }
+
+  /* Touch-friendly targets */
+  .btn,
+  button,
+  a,
+  .nav-links a,
+  select,
+  input,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile typography */
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p, li, span {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Mobile spacing */
+  section {
+    padding: 2rem 0;
+  }
+
+  /* Mobile hero optimizations */
+  .hero {
+    padding: calc(var(--header-h) + 1.5rem) 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  /* Mobile form optimizations */
+  .audit-fields,
+  .audit-field {
+    gap: 0.75rem;
+  }
+
+  .form-row {
+    gap: 0.75rem;
+  }
+
+  input, select, textarea {
+    font-size: 16px; /* Prevent iOS zoom */
+    padding: 0.875rem;
+  }
+
+  /* Mobile card optimizations */
+  .eco-card,
+  .feature-card,
+  .testimonials-grid > * {
+    padding: 1.25rem;
+  }
+
+  /* Mobile table optimizations */
+  table {
+    font-size: 0.85rem;
+  }
+
+  .comparison-table,
+  .comparison-row {
+    font-size: 0.9rem;
+  }
+
+  .comparison-row > * {
+    padding: 0.75rem 0.5rem;
+  }
+
+  /* Mobile pricing table */
+  .pricing-grid {
+    gap: 1rem;
+  }
+
+  .pricing-card {
+    padding: 1.5rem;
+  }
+
+  /* Mobile navigation improvements */
+  .nav-links {
+    backdrop-filter: blur(20px);
+    background: rgba(6, 10, 18, 0.95);
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Mobile quick audit form */
+  .quick-audit-form {
+    padding: 1.25rem;
+  }
+
+  .quick-audit-form h3 {
+    font-size: 1.1rem;
+  }
+
+  .audit-sub {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile proof layer */
+  .proof-metrics,
+  .proof-cases {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Mobile objection strip */
+  .objection-strip {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .objection-item {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile contact form */
+  .contact-form {
+    padding: 1.25rem;
+  }
+
+  .form-progress {
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  /* Mobile button sizing */
+  .btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    font-weight: 500;
+  }
+
+  /* Mobile sticky CTA */
+  .sticky-cta {
+    padding: 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  /* Mobile scroll-to-top */
+  .scroll-top {
+    bottom: 5rem;
+    right: 1rem;
+  }
+
+  /* Mobile footer */
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* Small mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 1rem);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-stats {
+    align-items: flex-start;
+  }
+
+  .quick-audit-form {
+    padding: 1rem;
+  }
+
+  .audit-field {
+    flex-direction: column;
+  }
+
+  .audit-field label {
+    font-size: 0.85rem;
+  }
+
+  /* Touch-friendly form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 16px;
+    padding: 0.75rem;
+  }
+
+  /* Mobile button adjustments */
+  .btn {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .btn-small {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Compact pricing for small screens */
+  .pricing-card {
+    padding: 1rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1rem;
+  }
+
+  .pricing-price {
+    font-size: 1.5rem;
+  }
+
+  /* Compact comparison table */
+  .comparison-row {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .comparison-row > * {
+    padding: 0.5rem 0.25rem;
+  }
+
+  /* Mobile proof metrics */
+  .proof-metric {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .proof-metric-value {
+    font-size: 1.5rem;
+  }
+
+  /* Mobile testimonial cards */
+  .testimonials-grid > * {
+    padding: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile contact form steps */
+  .form-step {
+    padding: 0.5rem 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  /* Mobile footer optimization */
+  .footer-links li {
+    font-size: 0.9rem;
+  }
+
+  .legal-links {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce animations for better performance */
+  .reveal {
+    transition: none;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Optimize scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimize font rendering */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Optimize touch scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize tap highlighting */
+  * {
+    -webkit-tap-highlight-color: rgba(245, 158, 11, 0.2);
+    tap-highlight-color: rgba(245, 158, 11, 0.2);
+  }
+
+  /* Prevent text selection on interactive elements */
+  .btn, button, a, .nav-links a {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Improve touch feedback */
+  .btn:active,
+  button:active,
+  a:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+/* Mobile landscape orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding: calc(var(--header-h) + 1rem) 0 1.5rem;
+  }
+
+  section {
+    padding: 1.5rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .quick-audit-form {
+    padding: 1rem;
+  }
+}
+
+/* iPad and tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    width: calc(100% - 2rem);
+  }
+
+  .hero-inner,
+  .contact-layout {
+    gap: 2.5rem;
+  }
+
+  .feature-grid,
+  .ecosystem-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eco-card-wide {
+    grid-column: span 2;
+  }
+}
+
+/* High-resolution mobile displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Improve font rendering on high-DPI displays */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Mobile landscape fix for address bar */
+@media (max-width: 768px) and (orientation: landscape) {
+  html {
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+}
+
+/* Mobile touch device optimizations */
+.touch-device .btn:active,
+.touch-device button:active,
+.touch-device a:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.touch-device .touch-active {
+  opacity: 0.7;
+  transform: scale(0.99);
+}
+
+/* Smooth touch scrolling */
+.touch-device {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile optimized spacing for touch targets */
+@media (max-width: 768px) {
+  .btn,
+  button,
+  .nav-links a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* Mobile-optimized input fields */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+    padding: 0.875rem;
+    border-radius: 8px;
+  }
+
+  /* Mobile-focused states */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Disable complex animations on mobile */
+  .hero-visual {
+    animation: none;
+  }
+
+  /* Optimize rendering */
+  .reveal {
+    transition: opacity 0.3s ease;
+  }
+
+  /* Reduce shadow effects for better performance */
+  .eco-card,
+  .feature-card,
+  .pricing-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Mobile-specific improvements */
+.mobile-optimized .container {
+  max-width: 100%;
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .mobile-optimized .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Mobile-safe area for notched phones */
+@supports (padding: max(0px)) {
+  .mobile-optimized .header {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+
+  .mobile-optimized .sticky-cta {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
 }

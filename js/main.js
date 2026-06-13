@@ -1,6 +1,9 @@
 (function () {
   // Add js-enabled class to body when JavaScript loads
   document.body.classList.add('js-enabled');
+  
+  // Mobile-specific enhancements
+  document.body.classList.add('mobile-optimized');
 
   const header = document.getElementById("header");
   const navToggle = document.querySelector(".nav-toggle");
@@ -233,7 +236,57 @@
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
+      // Restore body scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     });
+  });
+
+  // Mobile-specific enhancements
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.body.classList.add('touch-device');
+    
+    // Improve touch interactions
+    const touchElements = document.querySelectorAll('.btn, button, a, .nav-links a');
+    touchElements.forEach(el => {
+      el.addEventListener('touchstart', function() {
+        this.classList.add('touch-active');
+      }, { passive: true });
+      
+      el.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.classList.remove('touch-active');
+        }, 150);
+      }, { passive: true });
+    });
+  }
+
+  // Mobile viewport height fix for address bar
+  function setMobileViewportHeight() {
+    if (window.innerWidth <= 768) {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+  }
+
+  setMobileViewportHeight();
+  window.addEventListener('resize', setMobileViewportHeight);
+  window.addEventListener('orientationchange', () => {
+    setTimeout(setMobileViewportHeight, 100);
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && 
+        !navLinks.contains(e.target) && 
+        !navToggle.contains(e.target)) {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
   });
 
   document.querySelectorAll("[data-select-plan]").forEach((btn) => {
