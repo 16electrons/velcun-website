@@ -106,7 +106,7 @@
   gap: 1rem;
 }
 
-.google-btn,
+.demo-btn,
 .email-btn {
   display: flex;
   align-items: center;
@@ -122,13 +122,13 @@
   transition: all 0.2s;
 }
 
-.google-btn {
-  background: #ffffff;
-  color: #1a2032;
+.demo-btn {
+  background: #f59e0b;
+  color: #ffffff;
 }
 
-.google-btn:hover {
-  background: #f8f9fa;
+.demo-btn:hover {
+  background: #fbbf24;
 }
 
 .email-btn {
@@ -139,6 +139,26 @@
 
 .email-btn:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+.email-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.email-login-form input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f141f;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.email-login-form input:focus {
+  outline: none;
+  border-color: #f59e0b;
 }
 
 .auth-divider {

@@ -31,10 +31,18 @@ class UnifiedDashboard {
       });
     });
 
-    // Google Sign-In button
-    document.getElementById('googleSignInBtn').addEventListener('click', () => {
-      this.initiateGoogleAuth();
+    // Demo login button
+    document.getElementById('demoLoginBtn').addEventListener('click', () => {
+      this.initiateDemoLogin();
     });
+
+    // Email login button
+    const emailLoginBtn = document.querySelector('.email-btn');
+    if (emailLoginBtn) {
+      emailLoginBtn.addEventListener('click', () => {
+        this.handleEmailLogin();
+      });
+    }
 
     // Time range selector
     document.getElementById('timeRange')?.addEventListener('change', (e) => {
@@ -43,24 +51,11 @@ class UnifiedDashboard {
   }
 
   // Authentication Methods
-  async initiateGoogleAuth() {
+  async initiateDemoLogin() {
     try {
-      const response = await fetch(`${this.apiBase}/auth/google?action=login`);
-      const data = await response.json();
+      this.showNotification('Starting demo login...', 'info');
       
-      if (data.success) {
-        // Open Google OAuth in popup
-        window.location.href = data.authUrl;
-      }
-    } catch (error) {
-      console.error('Google auth error:', error);
-      this.showNotification('Authentication failed', 'error');
-    }
-  }
-
-  async handleGoogleCallback(code) {
-    try {
-      const response = await fetch(`${this.apiBase}/auth/google?action=callback&code=${code}`);
+      const response = await fetch(`${this.apiBase}/auth/login?action=demo-login`);
       const data = await response.json();
       
       if (data.success) {
@@ -69,14 +64,53 @@ class UnifiedDashboard {
         localStorage.setItem('velcun_token', this.token);
         localStorage.setItem('velcun_user', JSON.stringify(this.user));
         
+        this.showNotification('Demo login successful!', 'success');
         this.showDashboard();
       } else {
-        throw new Error(data.error || 'Authentication failed');
+        throw new Error(data.error || 'Demo login failed');
       }
     } catch (error) {
-      console.error('Google callback error:', error);
-      this.showNotification('Authentication failed', 'error');
-      this.showAuth();
+      console.error('Demo login error:', error);
+      this.showNotification('Demo login failed', 'error');
+    }
+  }
+
+  async handleEmailLogin() {
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passwordInput').value;
+
+    if (!email || !password) {
+      this.showNotification('Please enter email and password', 'error');
+      return;
+    }
+
+    try {
+      this.showNotification('Signing in...', 'info');
+      
+      const response = await fetch(`${this.apiBase}/auth/login?action=login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        this.token = data.token;
+        this.user = data.user;
+        localStorage.setItem('velcun_token', this.token);
+        localStorage.setItem('velcun_user', JSON.stringify(this.user));
+        
+        this.showNotification('Login successful!', 'success');
+        this.showDashboard();
+      } else {
+        throw new Error(data.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Email login error:', error);
+      this.showNotification('Login failed', 'error');
     }
   }
 
@@ -607,15 +641,4 @@ window.refreshDashboard = function() {
 // Initialize dashboard when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   window.dashboard = new UnifiedDashboard();
-  
-  // Check for Google OAuth callback
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  
-  if (code) {
-    window.dashboard.handleGoogleCallback(code).then(() => {
-      // Remove code from URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-    });
-  }
 });
