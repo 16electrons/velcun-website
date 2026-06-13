@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+  <title>VELCUN - Unified Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css?v=20260613ud" />
+  <link rel="stylesheet" href="/portal/portal.css?v=20260613ud" />
+  <link rel="stylesheet" href="/unified/unified.css?v=20260613ud" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="unified-body">
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+      <svg class="loading-logo" width="64" height="64" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+        <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="loading-spinner"></div>
+      <p>Loading VELCUN...</p>
+    </div>
+  </div>
+
+  <!-- Auth Screen -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-container">
+      <div class="auth-header">
+        <svg width="48" height="48" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+          <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h1>Welcome to VELCUN</h1>
+        <p>Sign in to access your freight automation dashboard</p>
+      </div>
+
+      <div class="auth-buttons">
+        <button id="googleSignInBtn" class="google-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Sign in with Google
+        </button>
+        
+        <div class="auth-divider">
+          <span>or</span>
+        </div>
+
+        <button class="email-btn" onclick="showEmailLogin()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Sign in with Email
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        <p>By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Dashboard -->
+  <div id="dashboardScreen" class="dashboard-screen">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+      <div class="dashboard-header-inner">
+        <div class="dashboard-logo">
+          <svg width="36" height="36" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" fill="#f59e0b"/>
+            <path d="M16 8 L16 24 M8 16 L24 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>VELCUN</span>
+        </div>
+
+        <nav class="dashboard-nav">
+          <button class="nav-btn active" data-section="overview">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Overview</span>
+          </button>
+          <button class="nav-btn" data-section="settlement">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Settlement</span>
+          </button>
+          <button class="nav-btn" data-section="lanes">
+            <span class="nav-icon">🛤️</span>
+            <span class="nav-label">Lane IQ</span>
+          </button>
+          <button class="nav-btn" data-section="documents">
+            <span class="nav-icon">📄</span>
+            <span class="nav-label">Documents</span>
+          </button>
+          <button class="nav-btn" data-section="drivers">
+            <span class="nav-icon">🚛</span>
+            <span class="nav-label">Drivers</span>
+          </button>
+          <button class="nav-btn" data-section="border">
+            <span class="nav-icon">🌍</span>
+            <span class="nav-label">Border</span>
+          </button>
+          <button class="nav-btn" data-section="analytics">
+            <span class="nav-icon">📈</span>
+            <span class="nav-label">Analytics</span>
+          </button>
+          <button class="nav-btn" data-section="reports">
+            <span class="nav-icon">📋</span>
+            <span class="nav-label">Reports</span>
+          </button>
+        </nav>
+
+        <div class="dashboard-user">
+          <div class="user-info">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <div class="user-details">
+              <div class="user-name" id="userName">User Name</div>
+              <div class="user-email" id="userEmail">user@email.com</div>
+            </div>
+          </div>
+          <button class="logout-btn" onclick="handleLogout()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4m6 18h4a2 2 0 002-2V5a2 2 0 00-2-2h-4m-4 4v8m0-8l2 2m-2-2l2-2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-content">
+      <!-- Overview Section -->
+      <section id="overviewSection" class="dashboard-section active">
+        <div class="section-header">
+          <h1>Dashboard Overview</h1>
+          <div class="section-controls">
+            <select id="timeRange" class="time-select">
+              <option value="7d">Last 7 days</option>
+              <option value="30d" selected>Last 30 days</option>
+              <option value="90d">Last 90 days</option>
+            </select>
+            <button class="refresh-btn" onclick="refreshDashboard()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card revenue">
+            <div class="kpi-icon">💰</div>
+            <div class="kpi-content">
+              <div class="kpi-label">Total Revenue</div>
+              <div class="kpi-value" id="totalRevenue">$284,500</div>
+              <div class="kpi-change positive">+12.5% this month</div>
+            </div>
+          </div>
+          
+          <div class="kpi-card settlements">
+            <div class="kpi-icon">📋</div>
+            <div class="kpi-content">
+              <div class="kpi-label">Settlements Processed</div>
+              <div class="kpi-value" id="totalSettlements">1,247</div>
+              <div class="kpi-change positive">94% automation rate</div>
+            </div>
+          </div>
+          
+          <div class="kpi-card lanes">
+            <div class="kpi-icon">🛤️</div>
+            <div class="kpi-content">
+              <div class="kpi-label">Active Lanes</div>
+              <div class="kpi-value" id="activeLanes">127</div>
+              <div class="kpi-change positive">+8 new this week</div>
+            </div>
+          </div>
+          
+          <div class="kpi-card drivers">
+            <div class="kpi-icon">🚛</div>
+            <div class="kpi-content">
+              <div class="kpi-label">Driver Retention</div>
+              <div class="kpi-value" id="driverRetention">94.2%</div>
+              <div class="kpi-change positive">Above industry avg</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Layer Status -->
+        <div class="layer-status-section">
+          <h2>Automation Layer Status</h2>
+          <div class="layer-status-grid">
+            <div class="layer-card settlement">
+              <div class="layer-header">
+                <div class="layer-icon">💰</div>
+                <div class="layer-info">
+                  <div class="layer-name">Autonomous Settlement</div>
+                  <div class="layer-status-badge active">Active</div>
+                </div>
+              </div>
+              <div class="layer-metrics">
+                <div class="layer-metric">
+                  <span>Processed Today</span>
+                  <span id="settlementProcessed">23</span>
+                </div>
+                <div class="layer-metric">
+                  <span>Automation Rate</span>
+                  <span id="settlementAutomation">92%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="layer-card lanes">
+              <div class="layer-header">
+                <div class="layer-icon">🛤️</div>
+                <div class="layer-info">
+                  <div class="layer-name">Predictive Lane IQ</div>
+                  <div class="layer-status-badge active">Active</div>
+                </div>
+              </div>
+              <div class="layer-metrics">
+                <div class="layer-metric">
+                  <span>Analyzed Today</span>
+                  <span id="lanesAnalyzed">18</span>
+                </div>
+                <div class="layer-metric">
+                  <span>Efficiency Gain</span>
+                  <span id="lanesEfficiency">+24%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="layer-card documents">
+              <div class="layer-header">
+                <div class="layer-icon">📄</div>
+                <div class="layer-info">
+                  <div class="layer-name">Document Parsing</div>
+                  <div class="layer-status-badge active">Active</div>
+                </div>
+              </div>
+              <div class="layer-metrics">
+                <div class="layer-metric">
+                  <span>Parsed Today</span>
+                  <span id="documentsParsed">156</span>
+                </div>
+                <div class="layer-metric">
+                  <span>Accuracy</span>
+                  <span id="documentsAccuracy">94%</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="layer-card drivers">
+              <div class="layer-header">
+                <div class="layer-icon">🚛</div>
+                <div class="layer-info">
+                  <div class="layer-name">Driver Retention</div>
+                  <div class="layer-status-badge active">Active</div>
+                </div>
+              </div>
+              <div class="layer-metrics">
+                <div class="layer-metric">
+                  <span>High Risk Drivers</span>
+                  <span id="driversRisk">3</span>
+                </div>
+                <div class="layer-metric">
+                  <span>Avg Score</span>
+                  <span id="driversScore">87</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="layer-card border">
+              <div class="layer-header">
+                <div class="layer-icon">🌍</div>
+                <div class="layer-info">
+                  <div class="layer-name">Border Compliance</div>
+                  <div class="layer-status-badge active">Active</div>
+                </div>
+              </div>
+              <div class="layer-metrics">
+                <div class="layer-metric">
+                  <span>Pending Shipments</span>
+                  <span id="borderPending">7</span>
+                </div>
+                <div class="layer-metric">
+                  <span>Approval Rate</span>
+                  <span id="borderApproval">89%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-section">
+          <h2>Recent Activity</h2>
+          <div class="activity-list" id="activityList">
+            <!-- Activity items will be dynamically loaded -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Settlement Section -->
+      <section id="settlementSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Autonomous Settlement</h1>
+          <button class="action-btn primary" onclick="createNewSettlement()">+ New Settlement</button>
+        </div>
+
+        <div class="settlement-stats">
+          <div class="stat-card">
+            <div class="stat-value" id="settlementTotal">$125,400</div>
+            <div class="stat-label">Total This Month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="settlementProcessed">156</div>
+            <div class="stat-label">Processed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="settlementRate">94%</div>
+            <div class="stat-label">Automation Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="settlementTime">2.3 days</div>
+            <div class="stat-label">Avg Processing Time</div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="table-controls">
+            <input type="text" class="table-search" placeholder="Search settlements..." id="settlementSearch" />
+            <select class="table-filter" id="settlementFilter">
+              <option value="all">All Status</option>
+              <option value="paid">Paid</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Invoice #</th>
+                <th>Load ID</th>
+                <th>Carrier</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="settlementTableBody">
+              <!-- Data will be dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Lane IQ Section -->
+      <section id="lanesSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Predictive Lane Optimization</h1>
+          <button class="action-btn primary" onclick="analyzeNewLane()">+ Analyze Lane</button>
+        </div>
+
+        <div class="lane-analysis-form">
+          <h3>Analyze New Lane</h3>
+          <form onsubmit="handleLaneAnalysis(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Origin</label>
+                <input type="text" name="origin" placeholder="e.g., Dallas, TX" required />
+              </div>
+              <div class="form-group">
+                <label>Destination</label>
+                <input type="text" name="destination" placeholder="e.g., Chicago, IL" required />
+              </div>
+              <div class="form-group">
+                <label>Current Rate</label>
+                <input type="number" name="rate" placeholder="e.g., 1800" required />
+              </div>
+              <div class="form-group">
+                <label>Equipment</label>
+                <select name="equipment" required>
+                  <option value="dry-van">Dry Van</option>
+                  <option value="reefer">Reefer</option>
+                  <option value="flatbed">Flatbed</option>
+                  <option value="tanker">Tanker</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="action-btn primary">Analyze Lane</button>
+          </form>
+        </div>
+
+        <div class="data-table-container">
+          <div class="table-controls">
+            <input type="text" class="table-search" placeholder="Search lanes..." />
+            <select class="table-filter">
+              <option value="all">All Recommendations</option>
+              <option value="highly">Highly Recommended</option>
+              <option value="recommended">Recommended</option>
+              <option value="consider">Consider</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Origin → Destination</th>
+                <th>Current Rate</th>
+                <th>Projected Margin</th>
+                <th>Attractiveness</th>
+                <th>Demand</th>
+                <th>Recommendation</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="laneTableBody">
+              <!-- Data will be dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Documents Section -->
+      <section id="documentsSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Document Parsing</h1>
+          <button class="action-btn primary" onclick="uploadDocument()">+ Upload Document</button>
+        </div>
+
+        <div class="document-stats">
+          <div class="stat-card">
+            <div class="stat-value" id="docTotal">1,247</div>
+            <div class="stat-label">Total Documents</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="docAccuracy">94%</div>
+            <div class="stat-label">Average Confidence</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="docToday">156</div>
+            <div class="stat-label">Processed Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="docTime">30 min</div>
+            <div class="stat-label">Time Saved per Doc</div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="table-controls">
+            <input type="text" class="table-search" placeholder="Search documents..." />
+            <select class="table-filter">
+              <option value="all">All Types</option>
+              <option value="invoice">Invoice</option>
+              <option value="bol">Bill of Lading</option>
+              <option value="rate">Rate Confirmation</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Document ID</th>
+                <th>Type</th>
+                <th>Source</th>
+                <th>Confidence</th>
+                <th>Status</th>
+                <th>Processed</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="documentTableBody">
+              <!-- Data will be dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Drivers Section -->
+      <section id="driversSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Driver Management</h1>
+          <button class="action-btn primary" onclick="addDriver()">+ Add Driver</button>
+        </div>
+
+        <div class="driver-stats">
+          <div class="stat-card">
+            <div class="stat-value" id="driverTotal">25</div>
+            <div class="stat-label">Total Drivers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="driverRetentionStat">94.2%</div>
+            <div class="stat-label">Avg Retention</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="driverHighRisk">3</div>
+            <div class="stat-label">High Risk</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="driverProductivity">87%</div>
+            <div class="stat-label">Avg Productivity</div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="table-controls">
+            <input type="text" class="table-search" placeholder="Search drivers..." />
+            <select class="table-filter">
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="warning">Warning</option>
+              <option value="probation">Probation</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Driver ID</th>
+                <th>Name</th>
+                <th>Equipment</th>
+                <th>Retention Score</th>
+                <th>Risk Level</th>
+                <th>Productivity</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="driverTableBody">
+              <!-- Data will be dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Border Section -->
+      <section id="borderSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Border Compliance</h1>
+          <button class="action-btn primary" onclick="addShipment()">+ New Shipment</button>
+        </div>
+
+        <div class="border-stats">
+          <div class="stat-card">
+            <div class="stat-value" id="borderTotal">45</div>
+            <div class="stat-label">Total Shipments</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="borderRate">89%</div>
+            <div class="stat-label">Approval Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="borderPendingStat">7</div>
+            <div class="stat-label">Pending Approval</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="borderTime">45 min</div>
+            <div class="stat-label">Time Saved per Shipment</div>
+          </div>
+        </div>
+
+        <div class="data-table-container">
+          <div class="table-controls">
+            <input type="text" class="table-search" placeholder="Search shipments..." />
+            <select class="table-filter">
+              <option value="all">All Routes</option>
+              <option value="us-ca">US-Canada</option>
+              <option value="us-mx">US-Mexico</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Shipment ID</th>
+                <th>Route</th>
+                <th>Equipment</th>
+                <th>Compliance Score</th>
+                <th>Status</th>
+                <th>Scheduled Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="borderTableBody">
+              <!-- Data will be dynamically loaded -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analyticsSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Analytics & Reports</h1>
+          <button class="action-btn primary" onclick="generateReport()">Generate Report</button>
+        </div>
+
+        <div class="analytics-grid">
+          <div class="analytics-card revenue-trend">
+            <h3>Revenue Trend</h3>
+            <div class="chart-placeholder">
+              <div class="chart-mockup">
+                <div class="chart-bars">
+                  <div class="chart-bar" style="height: 60%"></div>
+                  <div class="chart-bar" style="height: 75%"></div>
+                  <div class="chart-bar" style="height: 68%"></div>
+                  <div class="chart-bar" style="height: 82%"></div>
+                  <div class="chart-bar" style="height: 90%"></div>
+                  <div class="chart-bar" style="height: 85%"></div>
+                  <div class="chart-bar" style="height: 95%"></div>
+                </div>
+                <div class="chart-labels">
+                  <span>Oct</span>
+                  <span>Nov</span>
+                  <span>Dec</span>
+                  <span>Jan</span>
+                  <span>Feb</span>
+                  <span>Mar</span>
+                  <span>Apr</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card utilization">
+            <h3>Layer Utilization</h3>
+            <div class="utilization-items">
+              <div class="utilization-item">
+                <span class="util-label">Settlement</span>
+                <div class="util-bar"><div class="util-fill" style="width: 92%"></div></div>
+                <span class="util-value">92%</span>
+              </div>
+              <div class="utilization-item">
+                <span class="util-label">Lane IQ</span>
+                <div class="util-bar"><div class="util-fill" style="width: 78%"></div></div>
+                <span class="util-value">78%</span>
+              </div>
+              <div class="utilization-item">
+                <span class="util-label">Parse</span>
+                <div class="util-bar"><div class="util-fill" style="width: 85%"></div></div>
+                <span class="util-value">85%</span>
+              </div>
+              <div class="utilization-item">
+                <span class="util-label">Driver</span>
+                <div class="util-bar"><div class="util-fill" style="width: 71%"></div></div>
+                <span class="util-value">71%</span>
+              </div>
+              <div class="utilization-item">
+                <span class="util-label">Border</span>
+                <div class="util-bar"><div class="util-fill" style="width: 65%"></div></div>
+                <span class="util-value">65%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card performance">
+            <h3>Performance Metrics</h3>
+            <div class="performance-items">
+              <div class="perf-item">
+                <span class="perf-icon">🎯</span>
+                <div class="perf-info">
+                  <div class="perf-label">Settlement Automation</div>
+                  <div class="perf-value">94%</div>
+                  <div class="perf-change positive">+12%</div>
+                </div>
+              </div>
+              <div class="perf-item">
+                <span class="perf-icon">🛤️</span>
+                <div class="perf-info">
+                  <div class="perf-label">Lane Efficiency</div>
+                  <div class="perf-value">23%</div>
+                  <div class="perf-change positive">+8%</div>
+                </div>
+              </div>
+              <div class="perf-item">
+                <span class="perf-icon">📄</span>
+                <div class="perf-info">
+                  <div class="perf-label">Document Accuracy</div>
+                  <div class="perf-value">92%</div>
+                  <div class="perf-change positive">+5%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card roi">
+            <h3>ROI Analysis</h3>
+            <div class="roi-summary">
+              <div class="roi-metric">
+                <div class="roi-label">Total Investment</div>
+                <div class="roi-value">$12,000/mo</div>
+              </div>
+              <div class="roi-arrow">→</div>
+              <div class="roi-metric">
+                <div class="roi-label">Value Generated</div>
+                <div class="roi-value">$45,200/mo</div>
+              </div>
+              <div class="roi-arrow">→</div>
+              <div class="roi-metric highlight">
+                <div class="roi-label">Net ROI</div>
+                <div class="roi-value">$33,200/mo</div>
+                <div class="roi-percent">277%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reports Section -->
+      <section id="reportsSection" class="dashboard-section">
+        <div class="section-header">
+          <h1>Detailed Reports</h1>
+          <button class="action-btn primary" onclick="createCustomReport()">Create Custom Report</button>
+        </div>
+
+        <div class="reports-grid">
+          <div class="report-card">
+            <div class="report-icon">💰</div>
+            <div class="report-title">Monthly Settlement Report</div>
+            <div class="report-desc">Complete breakdown of all settlements and payments</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('settlement')">Download</button>
+            </div>
+          </div>
+          
+          <div class="report-card">
+            <div class="report-icon">🛤️</div>
+            <div class="report-title">Lane Intelligence Report</div>
+            <div class="report-desc">Detailed lane profitability and recommendations</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('lanes')">Download</button>
+            </div>
+          </div>
+          
+          <div class="report-card">
+            <div class="report-icon">🚛</div>
+            <div class="report-title">Driver Performance Report</div>
+            <div class="report-desc">Comprehensive driver analytics and risk analysis</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('drivers')">Download</button>
+            </div>
+          </div>
+          
+          <div class="report-card">
+            <div class="report-icon">🌍</div>
+            <div class="report-title">Border Compliance Report</div>
+            <div class="report-desc">Cross-border shipment compliance status</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('border')">Download</button>
+            </div>
+          </div>
+          
+          <div class="report-card">
+            <div class="report-icon">📊</div>
+            <div class="report-title">Business Intelligence Report</div>
+            <div class="report-desc">Executive summary with KPIs and insights</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('bi')">Download</button>
+            </div>
+          </div>
+          
+          <div class="report-card">
+            <div class="report-icon">⚡</div>
+            <div class="report-title">Efficiency Analysis</div>
+            <div class="report-desc">Operational efficiency metrics and improvements</div>
+            <div class="report-actions">
+              <button class="action-btn" onclick="downloadReport('efficiency')">Download</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/unified/unified.js?v=20260613ud"></script>
+</body>
+</html>
