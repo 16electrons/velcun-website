@@ -887,4 +887,55 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // Dispatching Services Savings Calculator
+  const fleetSizeInput = document.getElementById('fleetSize');
+  const dispatchCostInput = document.getElementById('dispatchCost');
+  const avgMilesInput = document.getElementById('avgMiles');
+  const fleetSizeValue = document.getElementById('fleetSizeValue');
+  const dispatchCostValue = document.getElementById('dispatchCostValue');
+  const avgMilesValue = document.getElementById('avgMilesValue');
+  const totalSavingsEl = document.getElementById('totalSavings');
+  const staffSavingsEl = document.getElementById('staffSavings');
+  const perMileSavingsEl = document.getElementById('perMileSavings');
+  const backOfficeSavingsEl = document.getElementById('backOfficeSavings');
+
+  function calculateSavings() {
+    if (!fleetSizeInput || !dispatchCostInput || !avgMilesInput) return;
+
+    const fleetSize = parseInt(fleetSizeInput.value);
+    const dispatchCost = parseInt(dispatchCostInput.value);
+    const avgMiles = parseInt(avgMilesInput.value);
+
+    // Update display values
+    if (fleetSizeValue) fleetSizeValue.textContent = fleetSize;
+    if (dispatchCostValue) dispatchCostValue.textContent = dispatchCost;
+    if (avgMilesValue) avgMilesValue.textContent = avgMiles;
+
+    // Calculate savings
+    const dispatchSavings = fleetSize * (dispatchCost * 1000); // Dispatcher salaries eliminated
+    const perMileSaving = 0.225; // $0.225 per mile
+    const mileSavings = fleetSize * avgMiles * 1000 * perMileSaving;
+    const backOfficeSavings = dispatchSavings * 0.5; // Additional back office savings
+    const totalAnnualSavings = dispatchSavings + mileSavings + backOfficeSavings;
+
+    // Update results
+    if (totalSavingsEl) totalSavingsEl.textContent = '$' + totalAnnualSavings.toLocaleString();
+    if (staffSavingsEl) staffSavingsEl.textContent = '$' + dispatchSavings.toLocaleString();
+    if (perMileSavingsEl) perMileSavingsEl.textContent = '$' + perMileSaving.toFixed(3);
+    if (backOfficeSavingsEl) backOfficeSavingsEl.textContent = '$' + backOfficeSavings.toLocaleString();
+  }
+
+  if (fleetSizeInput) {
+    fleetSizeInput.addEventListener('input', calculateSavings);
+  }
+  if (dispatchCostInput) {
+    dispatchCostInput.addEventListener('input', calculateSavings);
+  }
+  if (avgMilesInput) {
+    avgMilesInput.addEventListener('input', calculateSavings);
+  }
+
+  // Initial calculation
+  calculateSavings();
 })();
