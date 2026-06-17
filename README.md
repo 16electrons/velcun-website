@@ -95,6 +95,36 @@ npm run deploy
 - Body: `{ email, password }`
 - Returns JWT token
 
+- **GET** `/api/auth/me`
+- Get the authenticated user's profile (requires `Authorization: Bearer <token>`)
+
+- **GET** `/api/auth/verify`
+- Verify a token is valid (requires `Authorization: Bearer <token>`)
+
+- **POST** `/api/auth/logout`
+- Clears the auth cookie
+
+### Health
+- **GET** `/api/health`
+- Reports API and database status
+
+### Onboarding
+- **POST** `/api/onboarding/account` — save account step
+- **POST** `/api/onboarding/fleet` — save fleet profile step
+- **POST** `/api/onboarding/automation` — save automation layer selection
+- **POST** `/api/onboarding/integration` — save TMS/ELD integration step
+- **POST** `/api/onboarding/complete` — mark onboarding complete
+- Identity is taken from the auth token, or from an `email` field in the body.
+
+### Admin
+- **GET** `/api/admin/overview`
+- Aggregate platform stats (requires a token with `role: "admin"`)
+
+### Analytics
+- **POST** `/api/analytics/custom-report`
+- Build a custom report (requires auth)
+- Body: `{ metrics: ["settlements", "lanes", ...], fleetId?, startDate?, endDate? }`
+
 ### Pilot Application
 - **POST** `/api/submit-pilot`
 - Submit pilot application
@@ -106,6 +136,7 @@ npm run deploy
 - `audits` - Fleet audit requests with ROI data
 - `users` - User accounts
 - `pilots` - Pilot applications
+- `onboarding` - Onboarding progress per user
 
 ## Security Notes
 
