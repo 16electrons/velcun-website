@@ -8,7 +8,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { email, password, name, company } = req.body;
+    const { password, name, company } = req.body;
+    const email = (req.body.email || '').toLowerCase();
 
     // Validate required fields
     if (!email || !password || !name) {

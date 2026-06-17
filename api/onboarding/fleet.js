@@ -1,0 +1,29 @@
+// Onboarding step 2 - fleet profile
+const { resolveIdentity, saveOnboardingStep } = require('../lib/onboarding');
+
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
+  }
+
+  const identity = resolveIdentity(req);
+  if (!identity) {
+    return res.status(401).json({ success: false, error: 'Authentication or email required' });
+  }
+
+  try {
+    const record = await saveOnboardingStep(identity, 'fleet', req.body || {});
+    return res.status(200).json({ success: true, step: 'fleet', steps: record.steps });
+  } catch (error) {
+    console.error('Onboarding fleet error:', error);
+    return res.status(500).json({ success: false, error: 'Failed to save fleet profile' });
+  }
+}

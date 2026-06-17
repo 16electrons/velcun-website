@@ -3,6 +3,22 @@ let currentStep = 1;
 const totalSteps = 5;
 let onboardingData = {};
 
+// Persist a step to the backend. Best-effort: never blocks the onboarding flow.
+async function saveOnboardingStep(step, data) {
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    const token = localStorage.getItem('token');
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+    await fetch(`/api/onboarding/${step}`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data)
+    });
+  } catch (error) {
+    console.error(`Failed to save onboarding step "${step}":`, error);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize onboarding
   initializeOnboarding();
@@ -70,15 +86,9 @@ function handleStep1(event) {
   const formData = new FormData(form);
   
   onboardingData.account = Object.fromEntries(formData);
-  
-  console.log('Step 1 data:', onboardingData.account);
-  
-  // In production, save to API
-  // fetch('/api/onboarding/account', {
-  //   method: 'POST',
-  //   body: JSON.stringify(onboardingData.account)
-  // })
-  
+
+  saveOnboardingStep('account', onboardingData.account);
+
   nextStep();
 }
 
@@ -95,17 +105,12 @@ function handleStep2(event) {
   
   onboardingData.fleet = {
     ...Object.fromEntries(formData),
-    challenges: challenges
+    challenges: challenges,
+    email: onboardingData.account && onboardingData.account.email
   };
-  
-  console.log('Step 2 data:', onboardingData.fleet);
-  
-  // In production, save to API
-  // fetch('/api/onboarding/fleet', {
-  //   method: 'POST',
-  //   body: JSON.stringify(onboardingData.fleet)
-  // })
-  
+
+  saveOnboardingStep('fleet', onboardingData.fleet);
+
   nextStep();
 }
 
@@ -120,17 +125,12 @@ function handleStep3(event) {
   });
   
   onboardingData.automation = {
-    enabledLayers: layers
+    enabledLayers: layers,
+    email: onboardingData.account && onboardingData.account.email
   };
-  
-  console.log('Step 3 data:', onboardingData.automation);
-  
-  // In production, save to API
-  // fetch('/api/onboarding/automation', {
-  //   method: 'POST',
-  //   body: JSON.stringify(onboardingData.automation)
-  // })
-  
+
+  saveOnboardingStep('automation', onboardingData.automation);
+
   nextStep();
 }
 
@@ -139,16 +139,13 @@ function handleStep4(event) {
   const form = event.target;
   const formData = new FormData(form);
   
-  onboardingData.integration = Object.fromEntries(formData);
-  
-  console.log('Step 4 data:', onboardingData.integration);
-  
-  // In production, save to API
-  // fetch('/api/onboarding/integration', {
-  //   method: 'POST',
-  //   body: JSON.stringify(onboardingData.integration)
-  // })
-  
+  onboardingData.integration = {
+    ...Object.fromEntries(formData),
+    email: onboardingData.account && onboardingData.account.email
+  };
+
+  saveOnboardingStep('integration', onboardingData.integration);
+
   // Complete onboarding
   completeOnboarding();
 }
@@ -162,13 +159,13 @@ function completeOnboarding() {
   // Save all onboarding data
   localStorage.setItem('onboardingData', JSON.stringify(onboardingData));
   localStorage.setItem('onboardingCompleted', 'true');
-  
-  // In production, send final completion API call
-  // fetch('/api/onboarding/complete', {
-  //   method: 'POST',
-  //   body: JSON.stringify(onboardingData)
-  // })
-  
+
+  const completePayload = {
+    ...onboardingData,
+    email: onboardingData.account && onboardingData.account.email
+  };
+  saveOnboardingStep('complete', completePayload);
+
   nextStep();
 }
 

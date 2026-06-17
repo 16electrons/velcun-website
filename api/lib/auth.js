@@ -70,10 +70,26 @@ function authenticateRequest(req, res, next) {
   next();
 }
 
+// Extract a bearer/cookie token from a request and return its verified payload (or null)
+function getAuthPayload(req) {
+  const authHeader = req.headers && req.headers.authorization;
+  let token = null;
+
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.substring(7);
+  } else if (req.cookies && req.cookies.velcun_token) {
+    token = req.cookies.velcun_token;
+  }
+
+  if (!token) return null;
+  return verifyToken(token);
+}
+
 module.exports = {
   generateToken,
   verifyToken,
   hashPassword,
   verifyPassword,
   authenticateRequest,
+  getAuthPayload,
 };
